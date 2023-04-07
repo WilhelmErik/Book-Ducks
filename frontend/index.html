@@ -5,9 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./src/scripts/main.js" type="module"></script>
+    <script src="./src/scripts/main.js" type="module" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <button id="logout-button" onclick="logoutUser()">Log Out</button>
+    <!-- <h1>HTTP Methods</h1> -->
+    <!-- <h2>Strapi med CRUD</h2>
+
+    <button onclick="geter()">GET</button>
+    <button onclick="poster()">POST</button>
+    <button onclick="puter()">PUT</button>
+    <button onclick="deleter()">DELETE</button> -->
+    <div id="entry-form">
+        <h1 id="h1-title">Strapi to-dos</h1>
+        <h2 id="h2-title"> Please login or register</h2>
+        <div id="entry" class="container">
+
+            <div class="buttons">
+                <button class="Login" onclick=displayLogin()> Login</button>
+                <button class=" Register" onclick="displayRegister() ">Register</button>
+            </div>
+            <div class="inputs">
+                <div class="Name">
+                    <label for="Name">Name</label>
+                    <input type="text" class="Name" name="Name" id="username" placeholder="name">
+                </div>
+                <div class="Password">
+                    <label for="Password">Password</label>
+                    <input type="password" class="Password" name="Password" id="pass">
+
+                </div>
+                <div class="Mail" id="mail" style="display:none">
+                    <label for="Mail"> Mail</label>
+                    <input type="text" name="Mail" class="Mail" id="mailen">
+                </div>
+            </div>
+
+
+
+
+            <button class="login-register" id="submit-login" onclick=login()>Login</button>
+            <button class="login-register" id="submit-register" style="display:none"
+                onclick=register()>Register</button>
+        </div>
+
+
+    </div>
+
+    <div id="todos">
+
+        <h2 id="todo-header">Someones List</h2>
+        <label for="title"> title</label>
+        <input type="text" name="title" class="title" id="todo-title1">
+
+        <label for="description"> description</label>
+        <input type="text" name="description" class="description" id="todo-description">
+        <button id="add-todo">Add todo</button>
+        <ul id="todo-items">
+            <li>Snabel</li>
+
+        </ul>
+
+    </div>
+
+
 </body>
+
 </html>

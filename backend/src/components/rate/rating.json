@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_rate_ratings",
+  "info": {
+    "displayName": "rating"
+  },
+  "options": {},
+  "attributes": {
+    "rating": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

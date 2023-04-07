@@ -1,4 +1,13 @@
+import { elements } from "./elements.js";
+import {
+  displayRegister,
+  displayLogin,
+  printPage,
+  registerMessage,
+  clearInput,
+} from "./ui-functions.js";
 const baseAPI = "http://localhost:1337/api/";
+const header = { "Content-Type": "application/json" };
 
 export function logoutUser() {
   sessionStorage.removeItem("token");
@@ -8,22 +17,30 @@ export function logoutUser() {
 
 export async function register() {
   try {
-    let response = await axios.post(
+    let response = await fetch(
       "http://localhost:1337/api/auth/local/register",
       {
-        username: Usernamet.value,
-        email: Mailet.value,
-        password: Pwet.value,
+        method: "POST",
+        headers: header,
+        body: JSON.stringify({
+          username: elements.Usernamet.value,
+          email: elements.Mailet.value,
+          password: elements.Pwet.value,
+        }),
       }
     );
-    registerMessage(response.data.user.username);
+    let data = await response.json();
+    console.log(data);
+    console.log(data.user.username);
+
+    registerMessage(data.user.username);
     clearInput();
   } catch (error) {
     console.error(error, "o no");
   }
 }
 
-export async function login(){
+export async function login() {
   try {
     console.log(Usernamet.value, Pwet.value);
     let response = await axios.post("http://localhost:1337/api/auth/local", {
@@ -59,7 +76,7 @@ export async function login(){
       "lmfao, that aint right"
     );
   }
-};
+}
 
 // document.getElementById("add-todo").addEventListener("click", async (e) => {
 //   await createTodo();

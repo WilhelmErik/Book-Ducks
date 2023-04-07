@@ -2,14 +2,16 @@ import { elements } from "./elements.js";
 import { getTodosForUser } from "./api-functions.js";
 
 export function displayRegister() {
-  document.getElementById("mail").style = "display:block";
-  document.getElementById("submit-register").style = "display:block";
-  document.getElementById("submit-login").style = "display:none";
+  elements.mailDiv.style = "display:block";
+  elements.registerBtn.style = "display:block";
+  elements.loginBtn.style = "display:none";
+  console.log("register");
 }
 export function displayLogin() {
-  document.getElementById("mail").style = "display:none";
-  document.getElementById("submit-register").style = "display:none";
-  document.getElementById("submit-login").style = "display:block";
+  elements.mailDiv.style = "display:none";
+  elements.registerBtn.style = "display:none";
+  elements.loginBtn.style = "display:block";
+  console.log("login");
 }
 
 export async function printPage() {
@@ -27,9 +29,9 @@ export async function printPage() {
 }
 
 export function clearInput() {
-  Mailet.value = "";
-  Usernamet.value = "";
-  Pwet.value = "";
+  elements.Mailet.value = "";
+  elements.Usernamet.value = "";
+  elements.Pwet.value = "";
 }
 
 export function registerMessage(name) {

@@ -1,0 +1,103 @@
+body {
+    text-align: center;
+}
+
+#entry {
+    display: grid;
+    border: black solid 2px;
+
+    margin: auto;
+
+}
+
+
+
+.container {
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+}
+
+.buttons {
+
+    margin: auto;
+}
+
+.buttons button {
+    margin: auto;
+    margin: 10px;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.login-register {
+    font-size: 32px;
+}
+
+input[type='text'],
+input[type='password'] {
+    text-align: center;
+    font-size: 24px;
+}
+
+#logout-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+}
+
+/* input */
+/* .container {
+    min-height: 300px;
+    max-width: 400px;
+
+    gap: 10px;
+    column-gap: 10px;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 25px 70px;
+    margin: auto;
+    grid-template-areas:
+        "Login Register"
+        "Name Name"
+        "Mail Mail"
+        "Password Password"
+        "login-register login-register";
+}
+
+.Login {
+    grid-area: Login;
+    margin: 10px;
+}
+
+.Register {
+    grid-area: Register;
+    margin: 10px;
+}
+
+.Name {
+    grid-area: Name;
+    font-size: 30px;
+    height: 34px;
+}
+
+.Mail {
+    grid-area: Mail;
+    font-size: 30px;
+    height: 34px;
+}
+
+.Password {
+    grid-area: Password;
+    font-size: 30px;
+    height: 34px;
+}
+
+.login-register {
+    grid-area: login-register;
+} */

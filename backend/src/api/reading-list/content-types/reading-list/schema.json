@@ -13,6 +13,12 @@
   "attributes": {
     "read_book": {
       "type": "string"
+    },
+    "books": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::book.book",
+      "mappedBy": "reading_lists"
     }
   }
 }

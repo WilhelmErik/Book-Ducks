@@ -41,6 +41,18 @@
       "relation": "oneToMany",
       "target": "api::user-rating.user-rating",
       "mappedBy": "book"
+    },
+    "interested_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "to_reads"
+    },
+    "reading_lists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::reading-list.reading-list",
+      "inversedBy": "books"
     }
   }
 }

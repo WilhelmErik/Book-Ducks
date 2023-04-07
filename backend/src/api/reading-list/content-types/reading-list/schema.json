@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reading_lists",
+  "info": {
+    "singularName": "reading-list",
+    "pluralName": "reading-lists",
+    "displayName": "reading_list"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "read_book": {
+      "type": "string"
+    }
+  }
+}

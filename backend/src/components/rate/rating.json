@@ -1,14 +1,15 @@
 {
   "collectionName": "components_rate_ratings",
   "info": {
-    "displayName": "rating"
+    "displayName": "rating",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "rating": {
+    "user_ratings": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "plugin::users-permissions.user"
+      "target": "api::user-rating.user-rating"
     }
   }
 }

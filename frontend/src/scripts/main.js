@@ -11,8 +11,6 @@ import {
   logoutUser,
 } from "./modules/api-functions.js";
 
-console.log("hejsan");
-
 // elements.
 elements.displayLogin.addEventListener("click", displayLogin);
 
@@ -21,3 +19,4 @@ elements.displayRegister.addEventListener("click", displayRegister);
 elements.loginBtn.addEventListener("click", login);
 
 elements.registerBtn.addEventListener("click", register);
+elements.logoutBtn.addEventListener("click", logoutUser);

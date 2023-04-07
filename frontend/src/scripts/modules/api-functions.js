@@ -42,13 +42,19 @@ export async function register() {
 
 export async function login() {
   try {
-    console.log(Usernamet.value, Pwet.value);
-    let response = await axios.post("http://localhost:1337/api/auth/local", {
-      identifier: Usernamet.value,
-      password: Pwet.value,
+    console.log(elements.Usernamet.value, elements.Pwet.value);
+    let response = await fetch("http://localhost:1337/api/auth/local", {
+      method: "POST",
+      headers: header,
+      body: JSON.stringify({
+        identifier: elements.Usernamet.value,
+        password: elements.Pwet.value,
+      }),
     });
 
-    let data = response.data;
+    let data = await response.json();
+    console.log(data);
+
     console.log(data.user.id, "paus");
 
     sessionStorage.setItem("userID", data.user.id);
@@ -60,12 +66,15 @@ export async function login() {
       "todo-header"
     ).innerText = `Todo List of ${data.user.username}`;
 
-    let userRes = await axios.get("http://localhost:1337/api/users/me", {
+    let userRes = await fetch("http://localhost:1337/api/users/me", {
+      method: "GET",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${data.jwt}`,
       },
     });
-    let userData = userRes.data;
+
+    let userData = await userRes.json();
     console.log(userData, "data2");
     await printPage();
     clearInput();

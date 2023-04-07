@@ -21,9 +21,6 @@
       "type": "string",
       "required": true
     },
-    "average_rating": {
-      "type": "decimal"
-    },
     "release_date": {
       "type": "date",
       "required": true
@@ -39,10 +36,11 @@
         "audios"
       ]
     },
-    "score": {
-      "type": "component",
-      "repeatable": true,
-      "component": "rate.rating"
+    "user_ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-rating.user-rating",
+      "mappedBy": "book"
     }
   }
 }

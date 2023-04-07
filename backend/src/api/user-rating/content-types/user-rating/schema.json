@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_ratings",
+  "info": {
+    "singularName": "user-rating",
+    "pluralName": "user-ratings",
+    "displayName": "user_rating",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rating": {
+      "type": "integer",
+      "max": 10,
+      "min": 1
+    },
+    "book": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::book.book",
+      "inversedBy": "user_ratings"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_ratings"
+    }
+  }
+}

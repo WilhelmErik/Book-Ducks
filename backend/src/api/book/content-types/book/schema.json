@@ -53,6 +53,12 @@
       "relation": "manyToMany",
       "target": "api::reading-list.reading-list",
       "inversedBy": "books"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "books"
     }
   }
 }

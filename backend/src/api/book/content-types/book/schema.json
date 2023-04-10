@@ -59,6 +59,11 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "mappedBy": "books"
+    },
+    "pages": {
+      "type": "integer",
+      "required": true,
+      "min": 1
     }
   }
 }

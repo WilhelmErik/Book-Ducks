@@ -59,7 +59,7 @@ export async function getBooks() {
       let cover = document.createElement("img");
       cover.src =
         "http://localhost:1337" +
-        book.attributes.book_cover.data.attributes.formats.thumbnail.url;
+        book.attributes.book_cover.data.attributes.formats.small.url;
 
       document.getElementById("book-cover").appendChild(title);
       document.getElementById("book-cover").appendChild(cover);

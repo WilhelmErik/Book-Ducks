@@ -46,3 +46,15 @@ export function registerMessage(name) {
     document.getElementById("h2-title").innerText = "Please login or register";
   }, 2000);
 }
+
+//renders the login/register page
+export async function renderLogin() {}
+
+//renders the profile page
+export async function renderProfile() {}
+
+//renders the main page
+export async function renderMain() {}
+
+//renders the selected book page
+export async function renderBook() {}

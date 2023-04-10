@@ -1,7 +1,9 @@
 body {
     text-align: center;
 }
-
+header{
+    border-bottom: black 2px solid ;
+}
 #entry {
     display: grid;
     border: black solid 2px;
@@ -31,9 +33,13 @@ body {
     padding-left: 50px;
     padding-right: 50px;
 }
-
+img{
+    /* height: 44px;
+    width: auto; */
+}
 .login-register {
     font-size: 32px;
+    margin: auto;
 }
 
 input[type='text'],

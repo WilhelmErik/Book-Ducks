@@ -1,17 +1,19 @@
 import { elements } from "./elements.js";
-import { getTodosForUser } from "./api-functions.js";
+import { getTodosForUser, getBooks } from "./api-functions.js";
 
 export function displayRegister() {
   elements.mailDiv.style = "display:block";
   elements.registerBtn.style = "display:block";
   elements.loginBtn.style = "display:none";
   console.log("register");
+  getBooks();
 }
 export function displayLogin() {
   elements.mailDiv.style = "display:none";
   elements.registerBtn.style = "display:none";
   elements.loginBtn.style = "display:block";
   console.log("login");
+  getBooks();
 }
 
 export async function printPage() {
@@ -20,7 +22,7 @@ export async function printPage() {
     todoArea.style = "display:block";
     let userID = sessionStorage.getItem("userID");
     logoutBtn.style = "display:block";
-    await getTodosForUser(userID);
+    // await getTodosForUser(userID);
   } else {
     logoutBtn.style = "display:none";
     todoArea.style = "display:none";

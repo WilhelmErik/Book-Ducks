@@ -40,6 +40,33 @@ export async function register() {
   }
 }
 
+export async function getBooks() {
+  const response = await fetch(
+    "http://localhost:1337/api/books?populate=deep",
+    {
+      method: "GET",
+      headers: header,
+    }
+  );
+  const data = await response.json();
+  console.log(data.data);
+  data.data.forEach((book) => {
+    console.log(book);
+    console.log(book.attributes.title);
+    if (book.attributes.book_cover.data !== null) {
+      let title = document.createElement("h2");
+      title.innerText = book.attributes.title;
+      let cover = document.createElement("img");
+      cover.src =
+        "http://localhost:1337" +
+        book.attributes.book_cover.data.attributes.formats.thumbnail.url;
+
+      document.getElementById("book-cover").appendChild(title);
+      document.getElementById("book-cover").appendChild(cover);
+    }
+  });
+}
+
 export async function login() {
   try {
     console.log(elements.Usernamet.value, elements.Pwet.value);

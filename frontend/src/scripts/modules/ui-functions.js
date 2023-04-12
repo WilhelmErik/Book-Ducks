@@ -48,13 +48,43 @@ export function registerMessage(name) {
 }
 
 //renders the login/register page
-export async function renderLogin() {}
+export async function renderAuth() {
+  
+  //clear everything aside from the header
+
+  //display the login/register options
+  //upon success, Write a welcome message with name, adjusted for option
+  //"redirect", aka clear and render main page with updated header for login/profile
+}
 
 //renders the profile page
-export async function renderProfile() {}
+export async function renderProfile() {
+  //clear everything aside from the header
+  //take the stored id and jwt token and fetch the user
+  // fetch the items from reading list
+  //either fetch them one by one or all at once
+
+  //api function for fetching user
+  //api function for fetchign reading list items with users ID
+}
 
 //renders the main page
-export async function renderMain() {}
+export async function renderMain() {
+  //clear everything aside from the header
+  //fetch all books
+  //display them in a grid-like fashion
+}
 
 //renders the selected book page
-export async function renderBook() {}
+export async function renderBook() {
+  //clear everything aside from the header
+
+  //take the selected book and render all relevant info
+
+   //api function for fetchign selected book with clicked id
+   //api function for fetching ratings
+   //api function for sending a users rating
+   //function for calculating average rating
+
+
+}

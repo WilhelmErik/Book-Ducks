@@ -12,6 +12,8 @@ import {
   getBooks,
 } from "./modules/api-functions.js";
 
+console.log("test");
+
 // elements.
 elements.displayLogin.addEventListener("click", displayLogin);
 
@@ -20,4 +22,10 @@ elements.displayRegister.addEventListener("click", displayRegister);
 elements.loginBtn.addEventListener("click", login);
 
 elements.registerBtn.addEventListener("click", register);
-elements.logoutBtn.addEventListener("click", logoutUser);
+elements.logoutBtn.addEventListener(
+  "click",
+  // logoutUser
+  (e) => {
+    console.log("test logout");
+  }
+);

@@ -1,5 +1,5 @@
 import { elements } from "./elements.js";
-import { getTodosForUser, getBooks } from "./api-functions.js";
+import { getBooks } from "./api-functions.js";
 
 export function displayRegister() {
   elements.mailDiv.style = "display:block";
@@ -48,13 +48,52 @@ export function registerMessage(name) {
 }
 
 //renders the login/register page
-export async function renderAuth() {
-  
-  //clear everything aside from the header
+export function renderAuth() {
+  console.log("hejsanaa");
+  // document.getElementById("entry-form").style.display = "inherit";
 
+  elements.main.innerHTML = `
+  <div id="entry-form">
+  <div class="buttons">
+      <button class="Login" id="display-login"> Login</button>
+      <button class=" Register" id="display-register">Register</button>
+  </div>
+  <div class="inputs">
+      <div class="Name" id="username-div">
+          <label for="username-input">Name</label>
+          <input type="text" class="Name" name="Name" id="username-input" placeholder="name">
+      </div>
+      <div class="Password" id="password-div">
+          <label for="password-input">Password</label>
+          <input type="password" class="Password" name="Password" id="password-input">
+
+      </div>
+      <div class="Mail" id="mail-div" style="display:none">
+          <label for="Mail"> Mail</label>
+          <input type="text" name="Mail" class="Mail" id="mail-input">
+      </div>
+  </div>
+
+
+
+
+  <button class="login-register" id="submit-login">Login</button>
+  <button class="login-register" id="submit-register" style="display:none">Register</button>
+</div>
+
+  `;
+  addEvents();
+  //clear everything aside from the header
   //display the login/register options
   //upon success, Write a welcome message with name, adjusted for option
   //"redirect", aka clear and render main page with updated header for login/profile
+}
+
+function addEvents() {
+  elements.displayLogin.addEventListener("click", displayLogin);
+  elements.displayRegister.addEventListener("click", displayRegister);
+  elements.loginBtn.addEventListener("click", login);
+  elements.registerBtn.addEventListener("click", register);
 }
 
 //renders the profile page
@@ -63,7 +102,6 @@ export async function renderProfile() {
   //take the stored id and jwt token and fetch the user
   // fetch the items from reading list
   //either fetch them one by one or all at once
-
   //api function for fetching user
   //api function for fetchign reading list items with users ID
 }
@@ -78,13 +116,9 @@ export async function renderMain() {
 //renders the selected book page
 export async function renderBook() {
   //clear everything aside from the header
-
   //take the selected book and render all relevant info
-
-   //api function for fetchign selected book with clicked id
-   //api function for fetching ratings
-   //api function for sending a users rating
-   //function for calculating average rating
-
-
+  //api function for fetchign selected book with clicked id
+  //api function for fetching ratings
+  //api function for sending a users rating
+  //function for calculating average rating
 }

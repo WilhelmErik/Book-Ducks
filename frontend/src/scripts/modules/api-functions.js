@@ -125,7 +125,7 @@ export async function setRating() {}
 
 export async function calcRating() {}
 
-export async function calcRating() {}
+// export async function calcRating() {}
 
 //------Old todo stuff------
 //--------Using for reference

@@ -1,4 +1,5 @@
 export const elements = {
+  main: document.getElementById("main"),
   Mailet: document.getElementById("mail-input"),
   Usernamet: document.getElementById("username-input"),
   Pwet: document.getElementById("password-input"),
@@ -7,6 +8,7 @@ export const elements = {
   todoArea: document.getElementById("todos"),
   entryForm: document.getElementById("entry-form"),
   logoutBtn: document.getElementById("logout-button"),
+  authBtn: document.getElementById("auth-button"),
   loginBtn: document.getElementById("submit-login"),
   registerBtn: document.getElementById("submit-register"),
 

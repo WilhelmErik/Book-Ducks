@@ -53,14 +53,14 @@ input[type='password'] {
     font-size: 24px;
 }
 
-#logout-button {
+#logout-button,#login-button {
     /* position: absolute;
     right: 10px;
     top: 10px; */
     padding: 10px;
     font-size: 24px;
     border-radius: 16px;
-    border-color: aquamarine;
+    border-color: rgb(255, 165, 127);
 }
 
 /* input */

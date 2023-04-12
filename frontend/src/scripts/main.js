@@ -3,25 +3,30 @@ import {
   displayRegister,
   displayLogin,
   printPage,
+  renderAuth,
 } from "./modules/ui-functions.js";
 import {
   register,
   login,
-  createTodo,
   logoutUser,
   getBooks,
 } from "./modules/api-functions.js";
+getBooks();
+console.log("test Hejsan");
 
-console.log("test");
+// document.getElementById("entry-form").style.display = "none";
 
 // elements.
-elements.displayLogin.addEventListener("click", displayLogin);
+elements.authBtn.addEventListener("click", renderAuth);
 
-elements.displayRegister.addEventListener("click", displayRegister);
+// elements.displayLogin.addEventListener("click", displayLogin);
+// elements.displayRegister.addEventListener("click", displayRegister);
+// elements.loginBtn.addEventListener("click", login);
+// elements.registerBtn.addEventListener("click", register);
 
-elements.loginBtn.addEventListener("click", login);
-
-elements.registerBtn.addEventListener("click", register);
+elements.displayLogin.addEventListener("click", () => {
+  console.log("hejsan");
+});
 elements.logoutBtn.addEventListener(
   "click",
   // logoutUser
@@ -29,3 +34,7 @@ elements.logoutBtn.addEventListener(
     console.log("test logout");
   }
 );
+
+document.getElementById("main").addEventListener("click", (e) => {
+  console.log(e.target);
+});

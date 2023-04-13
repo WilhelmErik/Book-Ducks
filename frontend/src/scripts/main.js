@@ -3,7 +3,11 @@ import {
   displayRegister,
   displayLogin,
   printPage,
+  hideAll,
+  renderIndex,
+  renderBook,
   renderAuth,
+  renderProfile,
 } from "./modules/ui-functions.js";
 import {
   register,
@@ -12,7 +16,9 @@ import {
   getBooks,
   getBook,
 } from "./modules/api-functions.js";
-getBooks();
+
+renderIndex();
+
 console.log("test Hejsan");
 
 // document.getElementById("entry-form").style.display = "none";
@@ -49,7 +55,8 @@ elements.indexPage.addEventListener("click", (e) => {
   if (targetId) {
     const id = targetId.dataset.id;
     console.log(id, "confusing");
-    getBook(id);
+    renderBook(id)
+    // getBook(id);
   }
   // console.log(e.target.getAttribute("data-id"));
 });

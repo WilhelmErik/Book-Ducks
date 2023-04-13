@@ -15,17 +15,17 @@ header {
   display: grid;
 }
 
-#book-cover {
+#all-books {
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
   justify-content: center;
 }
-#book-cover div {
+#all-books div {
   border: black solid 1px;
   margin: 10px;
 }
-#book-cover img {
+#all-books img {
   height: 200px;
 }
 

@@ -1,5 +1,5 @@
 import { elements } from "./elements.js";
-import { getBooks } from "./api-functions.js";
+import { getBooks, getBook } from "./api-functions.js";
 
 export function displayRegister() {
   elements.mailDiv.style = "display:block";
@@ -107,16 +107,55 @@ export async function renderProfile() {
 }
 
 //renders the main page
-export async function renderMain() {
+export async function renderIndex() {
   //clear everything aside from the header
   //fetch all books
+  let data = await getBooks();
   //display them in a grid-like fashion
+
+  console.log(data.data);
+  data.data.forEach((book) => {
+    console.log(book);
+    console.log(book.attributes.title);
+    if (book.attributes.book_cover.data !== null) {
+      let divvy = document.createElement("div");
+      divvy.id = book.attributes.title;
+      divvy.dataset.id = book.id;
+      let title = document.createElement("h2");
+      title.innerText = book.attributes.title;
+      let cover = document.createElement("img");
+      cover.src =
+        "http://localhost:1337" +
+        book.attributes.book_cover.data.attributes.formats.small.url;
+      document.getElementById("all-books").appendChild(divvy);
+      document.getElementById(book.attributes.title).appendChild(title);
+      document.getElementById(book.attributes.title).appendChild(cover);
+    }
+  });
 }
 
 //renders the selected book page
-export async function renderBook() {
+export async function renderBook(id) {
   //clear everything aside from the header
   //take the selected book and render all relevant info
+  let book = await getBook(id);
+
+  console.log(book, "booken");
+  console.log(book.attributes.title);
+
+  let divvy = document.createElement("div");
+  divvy.id = book.id;
+  divvy.dataset.id = book.id;
+  console.log(book.id);
+  let title = document.createElement("h2");
+  title.innerText = book.attributes.title;
+  let cover = document.createElement("img");
+  cover.src =
+    "http://localhost:1337" +
+    book.attributes.book_cover.data.attributes.formats.small.url;
+  document.getElementById("book-cover").appendChild(divvy);
+  document.getElementById(book.id).appendChild(title);
+  document.getElementById(book.id).appendChild(cover);
   //api function for fetchign selected book with clicked id
   //api function for fetching ratings
   //api function for sending a users rating

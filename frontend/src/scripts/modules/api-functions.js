@@ -5,6 +5,7 @@ import {
   printPage,
   registerMessage,
   clearInput,
+  hideAll,
 } from "./ui-functions.js";
 const baseAPI = "http://localhost:1337/api/";
 const header = { "Content-Type": "application/json" };
@@ -50,25 +51,9 @@ export async function getBooks() {
     }
   );
   const data = await response.json();
-  console.log(data.data);
-  data.data.forEach((book) => {
-    console.log(book);
-    console.log(book.attributes.title);
-    if (book.attributes.book_cover.data !== null) {
-      let divvy = document.createElement("div");
-      divvy.id = book.attributes.title;
-      divvy.dataset.id = book.id;
-      let title = document.createElement("h2");
-      title.innerText = book.attributes.title;
-      let cover = document.createElement("img");
-      cover.src =
-        "http://localhost:1337" +
-        book.attributes.book_cover.data.attributes.formats.small.url;
-      document.getElementById("book-cover").appendChild(divvy);
-      document.getElementById(book.attributes.title).appendChild(title);
-      document.getElementById(book.attributes.title).appendChild(cover);
-    }
-  });
+
+  console.log("done");
+  return data;
 }
 
 export async function login() {
@@ -124,6 +109,9 @@ export async function login() {
 
 export async function getBook(id) {
   console.log("hej");
+  hideAll();
+  elements.bookPage.style.display = "block";
+
   const response = await fetch(
     "http://localhost:1337/api/books/" + id + "?populate=deep",
     {
@@ -133,6 +121,7 @@ export async function getBook(id) {
   );
   const data = await response.json();
   console.log(data.data);
+  return data.data;
 }
 
 export async function setRating() {}

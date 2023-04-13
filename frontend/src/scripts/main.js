@@ -2,7 +2,6 @@ import { elements } from "./modules/elements.js";
 import {
   displayRegister,
   displayLogin,
-  printPage,
   hideAll,
   renderIndex,
   renderBook,
@@ -15,8 +14,11 @@ import {
   logoutUser,
   getBooks,
   getBook,
+  isLoggedIn,
 } from "./modules/api-functions.js";
 
+isLoggedIn();
+hideAll();
 renderIndex();
 
 console.log("test Hejsan");
@@ -34,13 +36,9 @@ elements.authBtn.addEventListener("click", renderAuth);
 elements.displayLogin.addEventListener("click", () => {
   console.log("hejsan");
 });
-elements.logoutBtn.addEventListener(
-  "click",
-  // logoutUser
-  (e) => {
-    console.log("test logout");
-  }
-);
+elements.logoutBtn.addEventListener("click", logoutUser, (e) => {
+  console.log("test logout");
+});
 
 document.getElementById("main").addEventListener("click", (e) => {
   console.log(e.target);
@@ -55,7 +53,7 @@ elements.indexPage.addEventListener("click", (e) => {
   if (targetId) {
     const id = targetId.dataset.id;
     console.log(id, "confusing");
-    renderBook(id)
+    renderBook(id);
     // getBook(id);
   }
   // console.log(e.target.getAttribute("data-id"));

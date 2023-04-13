@@ -18,6 +18,7 @@ export const elements = {
   passwordDiv: document.getElementById("password-div"),
   usernameDiv: document.getElementById("username-div"),
   mailDiv: document.getElementById("mail-div"),
+  allBooks: document.getElementById("all-books"),
 
   //divs
   indexPage: document.getElementById("index-page"),

@@ -2,10 +2,10 @@ import { elements } from "./elements.js";
 import {
   displayRegister,
   displayLogin,
-  printPage,
   registerMessage,
   clearInput,
   hideAll,
+  renderIndex,
 } from "./ui-functions.js";
 const baseAPI = "http://localhost:1337/api/";
 const header = { "Content-Type": "application/json" };
@@ -13,7 +13,25 @@ const header = { "Content-Type": "application/json" };
 export function logoutUser() {
   sessionStorage.removeItem("token");
   sessionStorage.removeItem("userID");
-  printPage();
+  isLoggedIn();
+  renderIndex();
+  document.getElementById("active-user").innerText = "";
+}
+
+export async function isLoggedIn() {
+  const token = sessionStorage.getItem("token");
+  console.log(token, "where am i ");
+  if (token !== null) {
+    elements.logoutBtn.style.display = "inherit";
+    elements.authBtn.style.display = "none";
+    let userData = await getActiveUser();
+    document.getElementById("active-user").innerText = userData.username;
+
+    console.log(data, "hejsan svejsan");
+  } else {
+    elements.logoutBtn.style.display = "none";
+    elements.authBtn.style.display = "inherit";
+  }
 }
 
 export async function register() {
@@ -78,22 +96,23 @@ export async function login() {
 
     console.log(sessionStorage.getItem("token"), "Ett token");
 
-    document.getElementById(
-      "todo-header"
-    ).innerText = `Todo List of ${data.user.username}`;
+    // let userRes = await fetch("http://localhost:1337/api/users/me", {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${data.jwt}`,
+    //   },
+    // });
 
-    let userRes = await fetch("http://localhost:1337/api/users/me", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${data.jwt}`,
-      },
-    });
-
-    let userData = await userRes.json();
+    let userData = await getActiveUser();
     console.log(userData, "data2");
-    await printPage();
+
     clearInput();
+    alert("welcome");
+    hideAll();
+    isLoggedIn();
+    renderIndex();
+    document.getElementById("active-user").innerText = userData.username;
   } catch (error) {
     console.error(
       "Error during authentication:",
@@ -106,6 +125,18 @@ export async function login() {
 // document.getElementById("add-todo").addEventListener("click", async (e) => {
 //   await createTodo();
 // });
+
+export async function getActiveUser() {
+  let userRes = await fetch("http://localhost:1337/api/users/me", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    },
+  });
+  let userData = await userRes.json();
+  return userData;
+}
 
 export async function getBook(id) {
   console.log("hej");
@@ -124,9 +155,13 @@ export async function getBook(id) {
   return data.data;
 }
 
-export async function setRating() {}
+export async function setRating() {
 
-export async function calcRating() {}
+}
+
+export async function calcRating() {
+  
+}
 
 // export async function calcRating() {}
 

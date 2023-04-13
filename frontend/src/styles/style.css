@@ -10,6 +10,10 @@ header {
   align-items: center;
   background-color: rgb(247, 228, 187);
 }
+header #user-div {
+  display: flex;
+  flex-direction: row;
+}
 
 #index-page {
   display: grid;

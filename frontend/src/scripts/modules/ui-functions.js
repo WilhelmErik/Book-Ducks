@@ -1,5 +1,5 @@
 import { elements } from "./elements.js";
-import { getBooks, getBook } from "./api-functions.js";
+import { getBooks, getBook, login, register } from "./api-functions.js";
 
 export function displayRegister() {
   elements.mailDiv.style = "display:block";
@@ -16,19 +16,19 @@ export function displayLogin() {
   getBooks();
 }
 
-export async function printPage() {
-  if (sessionStorage.getItem("token")) {
-    entryForm.style = "display:none";
-    todoArea.style = "display:block";
-    let userID = sessionStorage.getItem("userID");
-    logoutBtn.style = "display:block";
-    // await getTodosForUser(userID);
-  } else {
-    logoutBtn.style = "display:none";
-    todoArea.style = "display:none";
-    entryForm.style = "display:block";
-  }
-}
+// export async function printPage() {
+//   if (sessionStorage.getItem("token")) {
+//     entryForm.style = "display:none";
+//     todoArea.style = "display:block";
+//     let userID = sessionStorage.getItem("userID");
+//     logoutBtn.style = "display:block";
+//     // await getTodosForUser(userID);
+//   } else {
+//     logoutBtn.style = "display:none";
+//     todoArea.style = "display:none";
+//     entryForm.style = "display:block";
+//   }
+// }
 
 export function clearInput() {
   elements.Mailet.value = "";
@@ -50,46 +50,16 @@ export function registerMessage(name) {
 //renders the login/register page
 export function renderAuth() {
   console.log("hejsanaa");
-  // document.getElementById("entry-form").style.display = "inherit";
-
-  elements.main.innerHTML = `
-  <div id="entry-form">
-  <div class="buttons">
-      <button class="Login" id="display-login"> Login</button>
-      <button class=" Register" id="display-register">Register</button>
-  </div>
-  <div class="inputs">
-      <div class="Name" id="username-div">
-          <label for="username-input">Name</label>
-          <input type="text" class="Name" name="Name" id="username-input" placeholder="name">
-      </div>
-      <div class="Password" id="password-div">
-          <label for="password-input">Password</label>
-          <input type="password" class="Password" name="Password" id="password-input">
-
-      </div>
-      <div class="Mail" id="mail-div" style="display:none">
-          <label for="Mail"> Mail</label>
-          <input type="text" name="Mail" class="Mail" id="mail-input">
-      </div>
-  </div>
-
-
-
-
-  <button class="login-register" id="submit-login">Login</button>
-  <button class="login-register" id="submit-register" style="display:none">Register</button>
-</div>
-
-  `;
-  addEvents();
+  hideAll();
+  elements.authPage.style.display = "inherit";
+  addAuthEvents();
   //clear everything aside from the header
   //display the login/register options
   //upon success, Write a welcome message with name, adjusted for option
   //"redirect", aka clear and render main page with updated header for login/profile
 }
 
-function addEvents() {
+function addAuthEvents() {
   elements.displayLogin.addEventListener("click", displayLogin);
   elements.displayRegister.addEventListener("click", displayRegister);
   elements.loginBtn.addEventListener("click", login);
@@ -110,6 +80,8 @@ export async function renderProfile() {
 export async function renderIndex() {
   //clear everything aside from the header
   //fetch all books
+  elements.indexPage.style.display = "inherit";
+  elements.allBooks.innerHTML = "";
   let data = await getBooks();
   //display them in a grid-like fashion
 
@@ -138,6 +110,8 @@ export async function renderIndex() {
 export async function renderBook(id) {
   //clear everything aside from the header
   //take the selected book and render all relevant info
+  hideAll();
+  elements.bookPage.style.display = "inherit";
   let book = await getBook(id);
 
   console.log(book, "booken");

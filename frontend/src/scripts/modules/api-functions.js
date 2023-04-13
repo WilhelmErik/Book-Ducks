@@ -55,15 +55,18 @@ export async function getBooks() {
     console.log(book);
     console.log(book.attributes.title);
     if (book.attributes.book_cover.data !== null) {
+      let divvy = document.createElement("div");
+      divvy.id = book.attributes.title;
+      divvy.dataset.id = book.id;
       let title = document.createElement("h2");
       title.innerText = book.attributes.title;
       let cover = document.createElement("img");
       cover.src =
         "http://localhost:1337" +
         book.attributes.book_cover.data.attributes.formats.small.url;
-
-      document.getElementById("book-cover").appendChild(title);
-      document.getElementById("book-cover").appendChild(cover);
+      document.getElementById("book-cover").appendChild(divvy);
+      document.getElementById(book.attributes.title).appendChild(title);
+      document.getElementById(book.attributes.title).appendChild(cover);
     }
   });
 }
@@ -119,7 +122,18 @@ export async function login() {
 //   await createTodo();
 // });
 
-export async function getBook() {}
+export async function getBook(id) {
+  console.log("hej");
+  const response = await fetch(
+    "http://localhost:1337/api/books/" + id + "?populate=deep",
+    {
+      method: "GET",
+      headers: header,
+    }
+  );
+  const data = await response.json();
+  console.log(data.data);
+}
 
 export async function setRating() {}
 

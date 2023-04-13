@@ -10,6 +10,7 @@ import {
   login,
   logoutUser,
   getBooks,
+  getBook,
 } from "./modules/api-functions.js";
 getBooks();
 console.log("test Hejsan");
@@ -37,4 +38,18 @@ elements.logoutBtn.addEventListener(
 
 document.getElementById("main").addEventListener("click", (e) => {
   console.log(e.target);
+});
+
+elements.indexPage.addEventListener("click", (e) => {
+  let target = e.target;
+  console.log(target, "target");
+  let targetId = target.closest("[data-id]");
+  console.log(targetId, "using closest");
+
+  if (targetId) {
+    const id = targetId.dataset.id;
+    console.log(id, "confusing");
+    getBook(id);
+  }
+  // console.log(e.target.getAttribute("data-id"));
 });

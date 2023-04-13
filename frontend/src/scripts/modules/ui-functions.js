@@ -122,3 +122,10 @@ export async function renderBook() {
   //api function for sending a users rating
   //function for calculating average rating
 }
+
+export function hideAll() {
+  elements.indexPage.style.display = "none";
+  elements.profilePage.style.display = "none";
+  elements.authPage.style.display = "none";
+  elements.bookPage.style.display = "none";
+}

@@ -18,4 +18,10 @@ export const elements = {
   passwordDiv: document.getElementById("password-div"),
   usernameDiv: document.getElementById("username-div"),
   mailDiv: document.getElementById("mail-div"),
+
+  //divs
+  indexPage: document.getElementById("index-page"),
+  profilePage: document.getElementById("profile-page"),
+  authPage: document.getElementById("auth-page"),
+  bookPage: document.getElementById("book-page"),
 };

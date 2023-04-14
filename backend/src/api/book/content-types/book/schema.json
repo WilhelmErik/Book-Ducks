@@ -36,12 +36,6 @@
         "audios"
       ]
     },
-    "user_ratings": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::user-rating.user-rating",
-      "mappedBy": "book"
-    },
     "interested_users": {
       "type": "relation",
       "relation": "manyToMany",
@@ -64,6 +58,12 @@
       "type": "integer",
       "required": true,
       "min": 1
+    },
+    "user_rating": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-rating.user-rating",
+      "mappedBy": "book"
     }
   }
 }

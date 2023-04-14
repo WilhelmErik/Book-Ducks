@@ -1,99 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./src/scripts/main.js" type="module" defer>
-       
-    </script>
-    <link rel="stylesheet" href="./src/styles/style.css">
+    <script src="./src/scripts/main.js" type="module" defer></script>
+    <link rel="stylesheet" href="./src/styles/style.css" />
     <script>
-        console.log("test")
+      console.log("test");
     </script>
-</head>
+  </head>
 
-<body>
-<header>
-<a href="">
-    <img src="./src/assets/images/duck-test.png" alt="" height="54px">
-</a>
-    <div><h1>Book Worms</h1></div>
-    <div id="user-div">
+  <body>
+    <header>
+      <a href="">
+        <img src="./src/assets/images/duck-test.png" alt="" height="54px" />
+      </a>
+      <div>
+        <h1>Book Worms</h1>
+      </div>
+      <div id="user-div">
         <h2 id="active-user"></h2>
-        <button id="logout-button" style="display:none;">Log Out</button>
-    </div>
-    <button id="auth-button">Auth</button>
-</header>
-   
-<main id="main">
+        <button id="logout-button" style="display: none">Log Out</button>
+      </div>
+      <button id="auth-button">Auth</button>
+    </header>
 
-
-    <div id="index-page">
-
+    <main id="main">
+      <div id="index-page">
         <div id="all-books">
-            <img src="" alt="">
+          <img src="" alt="" />
         </div>
-        
-    </div>
-    
-<!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+      </div>
 
-<!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
-    <div id="profile-page">
+      <!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 
-    </div>
+      <!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+      <div id="profile-page">
+        <div></div>
+      </div>
 
-<!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
-<!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
-    <div id="auth-page" style="display:none;" >
+      <!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+      <!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+      <div id="auth-page" style="display: none">
         <div id="entry-form">
-            <div class="buttons">
-                <button class="Login" id="display-login"> Login</button>
-                <button class=" Register" id="display-register">Register</button>
+          <div class="buttons">
+            <button class="Login" id="display-login">Login</button>
+            <button class="Register" id="display-register">Register</button>
+          </div>
+          <div class="inputs">
+            <div class="Name" id="username-div">
+              <label for="username-input">Name</label>
+              <input
+                type="text"
+                class="Name"
+                name="Name"
+                id="username-input"
+                placeholder="name"
+              />
             </div>
-            <div class="inputs">
-                <div class="Name" id="username-div">
-                    <label for="username-input">Name</label>
-                    <input type="text" class="Name" name="Name" id="username-input" placeholder="name">
-                </div>
-                <div class="Password" id="password-div">
-                    <label for="password-input">Password</label>
-                    <input type="password" class="Password" name="Password" id="password-input">
-
-                </div>
-                <div class="Mail" id="mail-div" style="display:none">
-                    <label for="Mail"> Mail</label>
-                    <input type="text" name="Mail" class="Mail" id="mail-input">
-                </div>
+            <div class="Password" id="password-div">
+              <label for="password-input">Password</label>
+              <input
+                type="password"
+                class="Password"
+                name="Password"
+                id="password-input"
+              />
             </div>
+            <div class="Mail" id="mail-div" style="display: none">
+              <label for="Mail"> Mail</label>
+              <input type="text" name="Mail" class="Mail" id="mail-input" />
+            </div>
+          </div>
 
-            <button class="login-register" id="submit-login">Login</button>
-            <button class="login-register" id="submit-register" style="display:none">Register</button>
+          <button class="login-register" id="submit-login">Login</button>
+          <button
+            class="login-register"
+            id="submit-register"
+            style="display: none"
+          >
+            Register
+          </button>
         </div>
-    </div>
-  <!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
-  
-<!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+      </div>
 
+      <!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 
-    <div id="book-page">
+      <!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
 
-<div id="book-cover">
-
-</div>
-    </div>
-<!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
-<!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
-   
-
-    
-
-</main>
-
-
-</body>
-
+      <div id="book-page">
+        <div id="book-left">
+          <div id="book-cover"></div>
+          <div id="add-reading">add read</div>
+          <div id="add-score">
+            <select name="" id="user-score">
+              <option value="2" disabled selected>Set Score</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <button id="set-score">set Score</button>
+            <button id="check-score">Test to fetch</button>
+          </div>
+        </div>
+        <div id="book-right">
+          <h2>Title</h2>
+          <h3>author</h3>
+          <div>score</div>
+          <h4>pages</h4>
+          <h4>published date</h4>
+        </div>
+      </div>
+      <!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+      <!-- -- -- ---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+    </main>
+  </body>
 </html>

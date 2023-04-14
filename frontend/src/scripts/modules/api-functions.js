@@ -156,15 +156,97 @@ export async function getBook(id) {
 }
 
 export async function setRating() {
+  // const bookID = targetId.dataset.id
+  const authToken = sessionStorage.getItem("token");
+  const userID = sessionStorage.getItem("userID");
+  try {
+    const response = await fetch("http://localhost:1337/api/user-ratings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify({
+        data: {
+          rating: document.getElementById("user-score").value,
+          user: userID,
+          book: elements.bookPage.dataset.id,
+        },
+      }),
+    });
 
+    const responseData = await response.json();
+    console.log("works", responseData);
+    return responseData;
+  } catch (error) {
+    console.error("Error in setRating function:", error);
+    throw error;
+  }
 }
 
-export async function calcRating() {
-  
+// user: userID,
+// book: elements.bookPage.dataset.id,
+
+export async function changeRating(ratingID) {
+  // console.log(userRating, userID);
+  const authToken = sessionStorage.getItem("token");
+  const response = await fetch(
+    "http://localhost:1337/api/user-ratings/" + ratingID,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify({
+        data: {
+          rating: document.getElementById("user-score").value,
+         
+        },
+      }),
+    }
+  );
+  console.log(response);
 }
 
-// export async function calcRating() {}
+export async function checkRating() {
+  const userID = sessionStorage.getItem("userID");
+  let chosenBook = elements.bookPage.dataset.id;
+  try {
+    const response = await fetch(
+      `http://localhost:1337/api/books/${chosenBook}?populate=user_rating.user`
+    );
+    const bookData = await response.json();
 
+    //array with all of the ratings of selected book
+    let ratedUsers = bookData.data.attributes.user_rating.data;
+
+    //if users id is found, then they have already set rating before, stores the rating
+    let hasRated = ratedUsers.find((element) => {
+      return element.attributes.user.data.id === +userID;
+    });
+
+    console.log(hasRated, "rating object");
+
+    if (hasRated) {
+      console.log(true, "has rated");
+      const ratingID = hasRated.id;
+      console.log(ratingID);
+      changeRating(ratingID);
+    } else console.log(false, "has not rated book");
+  } catch (error) {
+    console.error("Error in setRating function:", error);
+    throw error;
+  }
+}
+
+// export async function setRating(ratings) {
+//   console.log(ratings.length());
+// }
+
+export async function calcRating(ratings) {
+  console.log(ratings.length());
+}
 //------Old todo stuff------
 //--------Using for reference
 

@@ -15,6 +15,9 @@ import {
   getBooks,
   getBook,
   isLoggedIn,
+  setRating,
+  calcRating,
+  checkRating,
 } from "./modules/api-functions.js";
 
 isLoggedIn();
@@ -40,9 +43,11 @@ elements.logoutBtn.addEventListener("click", logoutUser, (e) => {
   console.log("test logout");
 });
 
-document.getElementById("main").addEventListener("click", (e) => {
-  console.log(e.target);
-});
+// document.getElementById("main").addEventListener("click", (e) => {
+//   console.log(e.target);
+// });
+
+//event listener for all the books, which will show the clicked book
 
 elements.indexPage.addEventListener("click", (e) => {
   let target = e.target;
@@ -57,4 +62,12 @@ elements.indexPage.addEventListener("click", (e) => {
     // getBook(id);
   }
   // console.log(e.target.getAttribute("data-id"));
+});
+
+document.getElementById("set-score").addEventListener("click", (e) => {
+  setRating();
+});
+
+document.getElementById("check-score").addEventListener("click", (e) => {
+  checkRating()
 });

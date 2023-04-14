@@ -17,9 +17,14 @@ header{
 }
 
 #index-page{
+   
     display: grid;
 }
-
+#book-page{
+    display: grid; 
+   grid-template-columns: 1fr 1fr;
+    border: 2px black solid;
+}
 #all-books{
     
     display: flex;

@@ -1,5 +1,12 @@
 import { elements } from "./elements.js";
-import { getBooks, getBook, login, register } from "./api-functions.js";
+import {
+  getBooks,
+  getBook,
+  login,
+  register,
+  setRating,
+  calcRating,
+} from "./api-functions.js";
 
 export function displayRegister() {
   elements.mailDiv.style = "display:block";
@@ -111,11 +118,15 @@ export async function renderBook(id) {
   //clear everything aside from the header
   //take the selected book and render all relevant info
   hideAll();
-  elements.bookPage.style.display = "inherit";
+  // elements.bookPage.style.display = "unset";
+  // elements.bookPage.style.display = "none";
   let book = await getBook(id);
-
+  console.log(book.attributes.user_ratings, "ratings");
+  calcRating;
   console.log(book, "booken");
   console.log(book.attributes.title);
+
+  elements.bookPage.dataset.id = book.id;
 
   let divvy = document.createElement("div");
   divvy.id = book.id;
@@ -134,6 +145,7 @@ export async function renderBook(id) {
   //api function for fetching ratings
   //api function for sending a users rating
   //function for calculating average rating
+  elements.bookPage.style.display = "grid";
 }
 
 export function hideAll() {

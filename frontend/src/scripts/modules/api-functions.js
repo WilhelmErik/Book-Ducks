@@ -184,9 +184,6 @@ export async function setRating() {
   }
 }
 
-// user: userID,
-// book: elements.bookPage.dataset.id,
-
 export async function changeRating(ratingID) {
   // console.log(userRating, userID);
   const authToken = sessionStorage.getItem("token");
@@ -247,75 +244,4 @@ export async function checkRating() {
 export async function calcRating(ratings) {
   console.log(ratings.length());
 }
-//------Old todo stuff------
-//--------Using for reference
 
-// export async function createTodo(userId) {
-//   const authToken = sessionStorage.getItem("token");
-//   const userID = sessionStorage.getItem("userID");
-
-//   const response = await axios.post(
-//     "http://localhost:1337/api/todos",
-//     {
-//       data: {
-//         title: todoTitle.value,
-//         description: todoDescrip.value,
-//         completed: false,
-//         user: userID,
-//       },
-//     },
-//     {
-//       headers: {
-//         Authorization: `Bearer ${authToken}`,
-//       },
-//     }
-//   );
-//   todoTitle.value = "";
-//   todoDescrip.value = "";
-//   getTodosForUser(userID);
-//   console.log(response.data);
-//   console.log(userID);
-// }
-
-// export async function getTodosForUser(userID) {
-//   const authToken = sessionStorage.getItem("token");
-//   const todoList = document.getElementById("todo-items");
-//   todoList.innerHTML = "";
-//   const response = await axios.get(
-//     `http://localhost:1337/api/users/me?populate=todos`,
-//     {
-//       headers: {
-//         Authorization: `Bearer ${authToken}`,
-//       },
-//     }
-//   );
-//   let userTodos = response.data.todos;
-
-//   userTodos.forEach((todo) => {
-//     todoList.innerHTML += `<li data-id="${todo.id}"> <b>${todo.title}</b>  ${todo.description}
-//           <button class="delete-todo">Delete todo</button>
-//             </li>`;
-//   });
-
-//   document.querySelectorAll(".delete-todo").forEach((btn) => {
-//     btn.addEventListener("click", async (e) => {
-//       const todoId = e.target.parentElement.getAttribute("data-id");
-//       console.log("I want to die", todoId);
-//       deleteTodo(todoId, userID, authToken);
-//     });
-//   });
-// }
-
-// export async function deleteTodo(todoId, userID, authToken) {
-//   const response = await axios.delete(
-//     `http://localhost:1337/api/todos/${todoId}?populate=todos`,
-//     {
-//       headers: {
-//         Authorization: `Bearer ${authToken}`,
-//       },
-//     }
-//   );
-//   console.log("buggy");
-//   console.log(response);
-//   getTodosForUser(userID);
-// }

@@ -155,6 +155,7 @@ export async function getBook(id) {
   return data.data;
 }
 
+//------------------------------Rating functions----------------------------------
 export async function setRating() {
   // const bookID = targetId.dataset.id
   const authToken = sessionStorage.getItem("token");
@@ -198,7 +199,6 @@ export async function changeRating(ratingID) {
       body: JSON.stringify({
         data: {
           rating: document.getElementById("user-score").value,
-         
         },
       }),
     }
@@ -230,7 +230,10 @@ export async function checkRating() {
       const ratingID = hasRated.id;
       console.log(ratingID);
       changeRating(ratingID);
-    } else console.log(false, "has not rated book");
+    } else {
+      console.log(false, "has not rated book");
+      setRating();
+    }
   } catch (error) {
     console.error("Error in setRating function:", error);
     throw error;
@@ -245,3 +248,4 @@ export async function calcRating(ratings) {
   console.log(ratings.length());
 }
 
+//----------------------------------------------------------------

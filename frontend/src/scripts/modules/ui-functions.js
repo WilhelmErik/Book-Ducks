@@ -118,6 +118,7 @@ export async function renderBook(id) {
   //clear everything aside from the header
   //take the selected book and render all relevant info
   hideAll();
+  document.getElementById("book-cover").innerHTML = "";
   // elements.bookPage.style.display = "unset";
   // elements.bookPage.style.display = "none";
   let book = await getBook(id);

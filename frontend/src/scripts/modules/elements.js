@@ -1,11 +1,9 @@
 export const elements = {
   main: document.getElementById("main"),
+  //---------------auth elements ---------------------
   Mailet: document.getElementById("mail-input"),
   Usernamet: document.getElementById("username-input"),
   Pwet: document.getElementById("password-input"),
-  todoTitle: document.getElementById("todo-title1"),
-  todoDescrip: document.getElementById("todo-description"),
-  todoArea: document.getElementById("todos"),
   entryForm: document.getElementById("entry-form"),
   logoutBtn: document.getElementById("logout-button"),
   authBtn: document.getElementById("auth-button"),
@@ -18,6 +16,8 @@ export const elements = {
   passwordDiv: document.getElementById("password-div"),
   usernameDiv: document.getElementById("username-div"),
   mailDiv: document.getElementById("mail-div"),
+
+    //---------------
   allBooks: document.getElementById("all-books"),
 
   //divs
@@ -25,4 +25,8 @@ export const elements = {
   profilePage: document.getElementById("profile-page"),
   authPage: document.getElementById("auth-page"),
   bookPage: document.getElementById("book-page"),
+
+
+  //---------------book page elements ---------------
+
 };

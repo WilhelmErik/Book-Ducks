@@ -286,7 +286,13 @@ export function calcRating(userRatings) {
 //get the books from users readinglist
 export async function getReadingList() {
   try {
-    const response = await fetch(`${baseAPI}users/${userID}?populate=*`);
+    const response = await fetch(`${baseAPI}users/me?populate=user_rating`, {
+      method: "GET",
+      headers: {
+        header,
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      },
+    });
     const data = await response.json();
     const readingList = data.to_reads;
     return readingList;
@@ -295,5 +301,7 @@ export async function getReadingList() {
   }
 }
 
-export async function setReadingList() {}
+export async function setReadingList(bookID, userID) {
+  const readinList = await getReadingList();
+}
 //------------------------_______________------------------------------

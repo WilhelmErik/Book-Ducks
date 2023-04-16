@@ -80,6 +80,13 @@ function addAuthEvents() {
 export async function renderProfile() {
   const readingList = await getReadingList();
   console.log(readingList, "the list");
+  hideAll();
+  elements.profilePage.style.display = "grid";
+  readingList.forEach((book) => {
+    let title = document.createElement("li");
+    title.innerText = book.title;
+    elements.readingList.appendChild(title);
+  });
   //clear everything aside from the header
   //take the stored id and jwt token and fetch the user
   // fetch the items from reading list

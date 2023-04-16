@@ -28,16 +28,23 @@ export const elements = {
   profilePage: document.getElementById("profile-page"),
   authPage: document.getElementById("auth-page"),
   bookPage: document.getElementById("book-page"),
+  //-----------
+
+  //----------- profile page elements
+  readingList: document.getElementById("reading-list"),
+
+  //-----------
 
   //---------------book page elements ---------------
   bookCover: document.getElementById("book-cover"),
   addReading: document.getElementById("add-reading"),
   addScore: document.getElementById("add-score"),
-  submitScore:document.getElementById("submit-score"),
+  submitScore: document.getElementById("submit-score"),
 
   bpTitle: document.getElementById("bp-title"),
   bpAuthor: document.getElementById("bp-author"),
   bpScore: document.getElementById("bp-score"),
   bpPages: document.getElementById("bp-pages"),
   bpPublished: document.getElementById("bp-published"),
+  //-----------
 };

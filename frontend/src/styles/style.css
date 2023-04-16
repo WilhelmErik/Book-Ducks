@@ -49,6 +49,12 @@ header #user-div {
   margin: auto;
 }
 
+#reading-list {
+  align-self: center;
+  margin: auto;
+  text-align: left;
+}
+
 .container {
   max-width: 50%;
   display: flex;

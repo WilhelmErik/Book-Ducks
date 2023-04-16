@@ -6,6 +6,9 @@ import {
   clearInput,
   hideAll,
   renderIndex,
+  renderProfile,
+  renderBook,
+  renderAuth,
 } from "./ui-functions.js";
 const baseAPI = "http://localhost:1337/api/";
 const header = { "Content-Type": "application/json" };
@@ -25,9 +28,13 @@ export async function isLoggedIn() {
     elements.logoutBtn.style.display = "inherit";
     elements.authBtn.style.display = "none";
     let userData = await getActiveUser();
-    document.getElementById("active-user").innerText = userData.username;
+    elements.activeUser.innerText = userData.username;
+    elements.activeUser.addEventListener("click", (e) => {
+      renderProfile();
+      console.log("hej");
+    });
 
-    console.log(data, "hejsan svejsan");
+    // console.log(data, "hejsan svejsan");
   } else {
     elements.logoutBtn.style.display = "none";
     elements.authBtn.style.display = "inherit";
@@ -36,18 +43,15 @@ export async function isLoggedIn() {
 
 export async function register() {
   try {
-    let response = await fetch(
-      "http://localhost:1337/api/auth/local/register",
-      {
-        method: "POST",
-        headers: header,
-        body: JSON.stringify({
-          username: elements.Usernamet.value,
-          email: elements.Mailet.value,
-          password: elements.Pwet.value,
-        }),
-      }
-    );
+    let response = await fetch(baseAPI + "auth/local/register", {
+      method: "POST",
+      headers: header,
+      body: JSON.stringify({
+        username: elements.Usernamet.value,
+        email: elements.Mailet.value,
+        password: elements.Pwet.value,
+      }),
+    });
     let data = await response.json();
     console.log(data);
     console.log(data.user.username);
@@ -57,21 +61,6 @@ export async function register() {
   } catch (error) {
     console.error(error, "o no");
   }
-}
-
-export async function getBooks() {
-  console.log("hej");
-  const response = await fetch(
-    "http://localhost:1337/api/books?populate=deep",
-    {
-      method: "GET",
-      headers: header,
-    }
-  );
-  const data = await response.json();
-
-  console.log("done");
-  return data;
 }
 
 export async function login() {
@@ -137,9 +126,20 @@ export async function getActiveUser() {
   let userData = await userRes.json();
   return userData;
 }
-
-export async function getBook(id) {
+export async function getBooks() {
   console.log("hej");
+  const response = await fetch(baseAPI + "books?populate=deep", {
+    method: "GET",
+    headers: header,
+  });
+  const data = await response.json();
+
+  console.log("done");
+  return data;
+}
+export async function getBook(id) {
+  console.log("hej på dig");
+  await getBookRatings(id);
   hideAll();
   elements.bookPage.style.display = "block";
 
@@ -161,7 +161,7 @@ export async function setRating() {
   const authToken = sessionStorage.getItem("token");
   const userID = sessionStorage.getItem("userID");
   try {
-    const response = await fetch("http://localhost:1337/api/user-ratings", {
+    const response = await fetch(baseAPI + "user-ratings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -188,21 +188,18 @@ export async function setRating() {
 export async function changeRating(ratingID) {
   // console.log(userRating, userID);
   const authToken = sessionStorage.getItem("token");
-  const response = await fetch(
-    "http://localhost:1337/api/user-ratings/" + ratingID,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
+  const response = await fetch(baseAPI + "user-ratings/" + ratingID, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authToken}`,
+    },
+    body: JSON.stringify({
+      data: {
+        rating: document.getElementById("user-score").value,
       },
-      body: JSON.stringify({
-        data: {
-          rating: document.getElementById("user-score").value,
-        },
-      }),
-    }
-  );
+    }),
+  });
   console.log(response);
 }
 
@@ -211,7 +208,7 @@ export async function checkRating() {
   let chosenBook = elements.bookPage.dataset.id;
   try {
     const response = await fetch(
-      `http://localhost:1337/api/books/${chosenBook}?populate=user_rating.user`
+      `${baseAPI}books/${chosenBook}?populate=user_rating.user`
     );
     const bookData = await response.json();
 
@@ -228,8 +225,8 @@ export async function checkRating() {
     if (hasRated) {
       console.log(true, "has rated");
       const ratingID = hasRated.id;
-      console.log(ratingID);
       changeRating(ratingID);
+      console.log("chaning rating of ", ratingID);
     } else {
       console.log(false, "has not rated book");
       setRating();
@@ -244,9 +241,33 @@ export async function checkRating() {
 //   console.log(ratings.length());
 // }
 
-export async function calcRating(ratings) {
+export async function getUserRatings(ratings) {
   console.log(ratings.length());
+}
+export async function getBookRatings(chosenBook) {
+  // let chosenBook = elements.bookPage.dataset.id;
+  const res = await fetch(`${baseAPI}books/${chosenBook}?populate=user_rating`);
+  const data = await res.json();
+  const userRatings = data.data.attributes.user_rating.data;
+  console.log(userRatings, "checking all the ratings");
+  return userRatings;
+  calcRating(userRatings);
+  // console.log(ratings.length());
+}
+
+export function calcRating(userRatings) {
+  console.log(userRatings, "inside calcrating");
+  const rateAmount = userRatings.length;
+  let rateValues = userRatings.map((object) => {
+    return object.attributes.rating;
+  });
+
+  let scoreTotal = rateValues.reduce((accum, current) => accum + current);
+  console.log(scoreTotal, "scoreTotal");
+  let averageRating = scoreTotal / rateAmount;
+  console.log(averageRating, "Average rating");
+  return averageRating;
+  // console.log(ratings.length());
 }
 
 //----------------------------------------------------------------
-

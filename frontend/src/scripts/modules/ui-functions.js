@@ -5,6 +5,7 @@ import {
   login,
   register,
   setRating,
+  getBookRatings,
   calcRating,
 } from "./api-functions.js";
 
@@ -123,7 +124,9 @@ export async function renderBook(id) {
   // elements.bookPage.style.display = "none";
   let book = await getBook(id);
   console.log(book.attributes.user_ratings, "ratings");
-  calcRating;
+  let ratings = await getBookRatings(id);
+  let averageScore = await calcRating(ratings);
+  console.log(averageScore, "average score from renderVBook");
   console.log(book, "booken");
   console.log(book.attributes.title);
 

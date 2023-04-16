@@ -5,8 +5,7 @@ export const elements = {
   Usernamet: document.getElementById("username-input"),
   Pwet: document.getElementById("password-input"),
   entryForm: document.getElementById("entry-form"),
-  logoutBtn: document.getElementById("logout-button"),
-  authBtn: document.getElementById("auth-button"),
+
   loginBtn: document.getElementById("submit-login"),
   registerBtn: document.getElementById("submit-register"),
 
@@ -17,7 +16,11 @@ export const elements = {
   usernameDiv: document.getElementById("username-div"),
   mailDiv: document.getElementById("mail-div"),
 
-    //---------------
+  //---------------header
+  logoutBtn: document.getElementById("logout-button"),
+  authBtn: document.getElementById("auth-button"),
+  activeUser: document.getElementById("active-user"),
+  //---------------
   allBooks: document.getElementById("all-books"),
 
   //divs
@@ -26,7 +29,5 @@ export const elements = {
   authPage: document.getElementById("auth-page"),
   bookPage: document.getElementById("book-page"),
 
-
   //---------------book page elements ---------------
-
 };

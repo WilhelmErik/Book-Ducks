@@ -311,6 +311,19 @@ export async function getReadingList() {
 export async function setReadingList(bookID, userID) {
   const readingList = await getReadingList();
   if(!readingList.some(book => book.id ===bookID)){
+    readingList.push(bookID);
+    const response = await fetch(`${baseAPI}users/me`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        to_reads: readingList,
+       
+      }),
+    },);
+
 
   }
 

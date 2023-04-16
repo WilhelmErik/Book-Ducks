@@ -266,7 +266,8 @@ export function calcRating(userRatings) {
   console.log(scoreTotal, "scoreTotal");
   let averageRating = scoreTotal / rateAmount;
   console.log(averageRating, "Average rating");
-  return averageRating;
+  // return averageRating;
+  return { averageRating: averageRating, totalVoters: rateAmount };
   // console.log(ratings.length());
 }
 

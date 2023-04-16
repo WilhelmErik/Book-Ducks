@@ -119,18 +119,25 @@ export async function renderBook(id) {
   //clear everything aside from the header
   //take the selected book and render all relevant info
   hideAll();
-  document.getElementById("book-cover").innerHTML = "";
+  elements.bookCover.innerHTML = "";
   // elements.bookPage.style.display = "unset";
   // elements.bookPage.style.display = "none";
   let book = await getBook(id);
+  elements.bookPage.dataset.id = book.id;
+
   console.log(book.attributes.user_ratings, "ratings");
   let ratings = await getBookRatings(id);
-  let averageScore = await calcRating(ratings);
-  console.log(averageScore, "average score from renderVBook");
+  let calced = calcRating(ratings);
+  let { averageRating, totalVoters } = calced;
+
+  console.log(
+    averageRating,
+    "average score from renderBook, of",
+    totalVoters,
+    "voters"
+  );
   console.log(book, "booken");
   console.log(book.attributes.title);
-
-  elements.bookPage.dataset.id = book.id;
 
   let divvy = document.createElement("div");
   divvy.id = book.id;

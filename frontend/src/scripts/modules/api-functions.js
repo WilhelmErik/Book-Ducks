@@ -249,6 +249,11 @@ export async function checkRating() {
 
 export async function getBookRatings(chosenBook) {
   // let chosenBook = elements.bookPage.dataset.id;
+
+  //testing a function here
+  setReadingList();
+  //--
+
   const res = await fetch(`${baseAPI}books/${chosenBook}?populate=user_rating`);
   const data = await res.json();
   const userRatings = data.data.attributes.user_rating.data;
@@ -286,15 +291,17 @@ export function calcRating(userRatings) {
 //get the books from users readinglist
 export async function getReadingList() {
   try {
-    const response = await fetch(`${baseAPI}users/me?populate=user_rating`, {
+    const response = await fetch(`${baseAPI}users/me?populate=to_reads`, {
       method: "GET",
       headers: {
-        header,
+        "Content-Type": "application/json",
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
     });
     const data = await response.json();
+
     const readingList = data.to_reads;
+    console.log(readingList, "her babaeriba");
     return readingList;
   } catch (error) {
     console.error("Error fetching user reading list:", error);
@@ -302,6 +309,11 @@ export async function getReadingList() {
 }
 
 export async function setReadingList(bookID, userID) {
-  const readinList = await getReadingList();
+  const readingList = await getReadingList();
+  if(!readingList.some(book => book.id ===bookID)){
+
+  }
+
+  console.log(readingList, "active users readinglist");
 }
 //------------------------_______________------------------------------

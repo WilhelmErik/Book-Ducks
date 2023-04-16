@@ -31,7 +31,7 @@ export async function isLoggedIn() {
     elements.activeUser.innerText = userData.username;
     elements.activeUser.addEventListener("click", (e) => {
       renderProfile();
-      console.log("hej");
+      console.log("hej, lets do smth");
     });
 
     // console.log(data, "hejsan svejsan");
@@ -243,17 +243,15 @@ export async function checkRating() {
 //   console.log(ratings.length());
 // }
 
-// export async function getUserRatings(ratings) {
-//   console.log(ratings.length());
-// }
+
+//function that should get all the books a user has rated
+export async function getUserRatings(ratings) {
+
+  console.log(ratings.length());
+}
 
 export async function getBookRatings(chosenBook) {
-  // let chosenBook = elements.bookPage.dataset.id;
-
-  //testing a function here
-  setReadingList();
-  //--
-
+  
   const res = await fetch(`${baseAPI}books/${chosenBook}?populate=user_rating`);
   const data = await res.json();
   const userRatings = data.data.attributes.user_rating.data;
@@ -308,11 +306,12 @@ export async function getReadingList() {
   }
 }
 
-export async function setReadingList(bookID, userID) {
+export async function setReadingList(chosenBook, userID) {
   const readingList = await getReadingList();
-  if(!readingList.some(book => book.id ===bookID)){
-    readingList.push(bookID);
-    const response = await fetch(`${baseAPI}users/me`, {
+  console.log(readingList, "active users readinglist");
+  if (!readingList.some((book) => book.id === chosenBook.id)) {
+    readingList.push(chosenBook);
+    const response = await fetch(`${baseAPI}users/${userID}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -320,13 +319,12 @@ export async function setReadingList(bookID, userID) {
       },
       body: JSON.stringify({
         to_reads: readingList,
-       
       }),
-    },);
-
-
+    });
+  } else {
+    console.log("Book is already in the reading list.", chosenBook);
   }
 
-  console.log(readingList, "active users readinglist");
+  
 }
 //------------------------_______________------------------------------

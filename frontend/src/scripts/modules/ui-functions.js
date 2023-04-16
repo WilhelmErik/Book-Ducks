@@ -7,6 +7,8 @@ import {
   setRating,
   getBookRatings,
   calcRating,
+  setReadingList,
+  getReadingList,
 } from "./api-functions.js";
 
 export function displayRegister() {
@@ -76,6 +78,8 @@ function addAuthEvents() {
 
 //renders the profile page
 export async function renderProfile() {
+  const readingList = await getReadingList();
+  console.log(readingList, "the list");
   //clear everything aside from the header
   //take the stored id and jwt token and fetch the user
   // fetch the items from reading list
@@ -95,7 +99,7 @@ export async function renderIndex() {
 
   console.log(data.data);
   data.data.forEach((book) => {
-    console.log(book);
+    // console.log(book);
     console.log(book.attributes.title);
     if (book.attributes.book_cover.data !== null) {
       let divvy = document.createElement("div");
@@ -139,6 +143,10 @@ export async function renderBook(id) {
   );
   console.log(book, "booken");
   console.log(book.attributes.title);
+
+  elements.addReading.addEventListener("click", () => {
+    setReadingList(book, sessionStorage.getItem("userID"));
+  });
 
   elements.bpTitle.innerText = book.attributes.title;
   elements.bpAuthor.innerText = book.attributes.author;

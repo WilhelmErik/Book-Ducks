@@ -119,12 +119,12 @@ export async function renderBook(id) {
   //clear everything aside from the header
   //take the selected book and render all relevant info
   hideAll();
+
   elements.bookCover.innerHTML = "";
   // elements.bookPage.style.display = "unset";
   // elements.bookPage.style.display = "none";
   let book = await getBook(id);
   elements.bookPage.dataset.id = book.id;
-
   console.log(book.attributes.user_ratings, "ratings");
   let ratings = await getBookRatings(id);
   let calced = calcRating(ratings);
@@ -138,6 +138,13 @@ export async function renderBook(id) {
   );
   console.log(book, "booken");
   console.log(book.attributes.title);
+
+  elements.bpTitle.innerText = book.attributes.title;
+  elements.bpAuthor.innerText = book.attributes.author;
+  elements.bpScore.innerText =
+    "Average score:" + averageRating + " out of:" + totalVoters + " voters";
+  elements.bpPages.innerText = "pages:" + book.attributes.pages;
+  elements.bpPublished.innerText = "published:" + book.attributes.release_date;
 
   let divvy = document.createElement("div");
   divvy.id = book.id;

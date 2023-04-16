@@ -26,10 +26,7 @@ renderIndex();
 
 console.log("test Hejsan");
 
-
 elements.authBtn.addEventListener("click", renderAuth);
-
-
 
 elements.displayLogin.addEventListener("click", () => {
   console.log("hejsan");
@@ -37,8 +34,6 @@ elements.displayLogin.addEventListener("click", () => {
 elements.logoutBtn.addEventListener("click", logoutUser, (e) => {
   console.log("test logout");
 });
-
-
 
 elements.indexPage.addEventListener("click", (e) => {
   let target = e.target;
@@ -55,28 +50,24 @@ elements.indexPage.addEventListener("click", (e) => {
   // console.log(e.target.getAttribute("data-id"));
 });
 
-document.getElementById("set-score").addEventListener("click", (e) => {
-  setRating();
-});
+// document.getElementById("set-score").addEventListener("click", (e) => {
+//   setRating();
+// });
 
 document.getElementById("check-score").addEventListener("click", (e) => {
-  checkRating()
+  checkRating();
+  renderBook(elements.bookPage.dataset.id);
 });
-
-
-
 
 // document.getElementById("entry-form").style.display = "none";
 
 // elements.
-
 
 // document.getElementById("main").addEventListener("click", (e) => {
 //   console.log(e.target);
 // });
 
 //event listener for all the books, which will show the clicked book
-
 
 // elements.displayLogin.addEventListener("click", displayLogin);
 // elements.displayRegister.addEventListener("click", displayRegister);

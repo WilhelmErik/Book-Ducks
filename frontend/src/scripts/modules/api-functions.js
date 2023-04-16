@@ -251,24 +251,27 @@ export async function getBookRatings(chosenBook) {
   const userRatings = data.data.attributes.user_rating.data;
   console.log(userRatings, "checking all the ratings");
   return userRatings;
-  calcRating(userRatings);
-  // console.log(ratings.length());
 }
 
 export function calcRating(userRatings) {
   console.log(userRatings, "inside calcrating");
   const rateAmount = userRatings.length;
-  let rateValues = userRatings.map((object) => {
-    return object.attributes.rating;
-  });
 
-  let scoreTotal = rateValues.reduce((accum, current) => accum + current);
-  console.log(scoreTotal, "scoreTotal");
-  let averageRating = scoreTotal / rateAmount;
-  console.log(averageRating, "Average rating");
-  // return averageRating;
-  return { averageRating: averageRating, totalVoters: rateAmount };
-  // console.log(ratings.length());
+  if (rateAmount === 0) {
+    return { averageRating: 0, totalVoters: 0 };
+  } else {
+    let rateValues = userRatings.map((object) => {
+      return object.attributes.rating;
+    });
+
+    let scoreTotal = rateValues.reduce((accum, current) => accum + current);
+    console.log(scoreTotal, "scoreTotal");
+    let averageRating = scoreTotal / rateAmount;
+    console.log(averageRating, "Average rating");
+    // return averageRating;
+    return { averageRating: averageRating, totalVoters: rateAmount };
+    // console.log(ratings.length());
+  }
 }
 
 //----------------------------------------------------------------

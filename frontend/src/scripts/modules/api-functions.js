@@ -156,6 +156,7 @@ export async function getBook(id) {
 }
 
 //------------------------------Rating functions----------------------------------
+//set the active users chosen rating to the current book
 export async function setRating() {
   // const bookID = targetId.dataset.id
   const authToken = sessionStorage.getItem("token");
@@ -184,7 +185,7 @@ export async function setRating() {
     throw error;
   }
 }
-
+//Changes the active users chosen rating to the current book
 export async function changeRating(ratingID) {
   // console.log(userRating, userID);
   const authToken = sessionStorage.getItem("token");
@@ -203,6 +204,7 @@ export async function changeRating(ratingID) {
   console.log(response);
 }
 
+//checks if the active user has rated the book or not, calls function accordingly
 export async function checkRating() {
   const userID = sessionStorage.getItem("userID");
   let chosenBook = elements.bookPage.dataset.id;
@@ -241,9 +243,10 @@ export async function checkRating() {
 //   console.log(ratings.length());
 // }
 
-export async function getUserRatings(ratings) {
-  console.log(ratings.length());
-}
+// export async function getUserRatings(ratings) {
+//   console.log(ratings.length());
+// }
+
 export async function getBookRatings(chosenBook) {
   // let chosenBook = elements.bookPage.dataset.id;
   const res = await fetch(`${baseAPI}books/${chosenBook}?populate=user_rating`);
@@ -274,13 +277,23 @@ export function calcRating(userRatings) {
   }
 }
 
-//----------------------------------------------------------------
+//___________________________________________________________________________
+
+//-----------------------------Readin List-----------------------------------
 
 //Add book to a users readinglist
-export async function setReadingList() {
-
-  
-}
 
 //get the books from users readinglist
-export async function getReadingList() {}
+export async function getReadingList() {
+  try {
+    const response = await fetch(`${baseAPI}users/${userID}?populate=*`);
+    const data = await response.json();
+    const readingList = data.to_reads;
+    return readingList;
+  } catch (error) {
+    console.error("Error fetching user reading list:", error);
+  }
+}
+
+export async function setReadingList() {}
+//------------------------_______________------------------------------

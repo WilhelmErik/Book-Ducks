@@ -9,6 +9,7 @@ import {
   calcRating,
   setReadingList,
   getReadingList,
+  getRatedBooks,
 } from "./api-functions.js";
 
 export function displayRegister() {
@@ -87,6 +88,7 @@ export async function renderProfile() {
     title.innerText = book.title;
     elements.readingList.appendChild(title);
   });
+  await getRatedBooks();
   //clear everything aside from the header
   //take the stored id and jwt token and fetch the user
   // fetch the items from reading list

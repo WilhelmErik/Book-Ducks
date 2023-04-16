@@ -72,7 +72,7 @@
       "target": "api::book.book",
       "mappedBy": "interested_users"
     },
-    "user_ratings": {
+    "book_ratings": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::user-rating.user-rating",

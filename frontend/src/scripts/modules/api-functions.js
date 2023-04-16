@@ -116,7 +116,7 @@ export async function login() {
 // });
 
 export async function getActiveUser() {
-  let userRes = await fetch("http://localhost:1337/api/users/me", {
+  let userRes = await fetch(baseAPI + "users/me", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -243,15 +243,25 @@ export async function checkRating() {
 //   console.log(ratings.length());
 // }
 
-
 //function that should get all the books a user has rated
-export async function getUserRatings(ratings) {
-
-  console.log(ratings.length());
+export async function getRatedBooks() {
+  // console.log(ratings.length());
+  const userID = sessionStorage.getItem("userID");
+  const res = await fetch(
+    `${baseAPI}users/${userID}?populate=book_ratings.book`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      },
+    }
+  );
+  let data = await res.json();
+  console.log(data.book_ratings, "these are the books you have rated");
 }
 
 export async function getBookRatings(chosenBook) {
-  
   const res = await fetch(`${baseAPI}books/${chosenBook}?populate=user_rating`);
   const data = await res.json();
   const userRatings = data.data.attributes.user_rating.data;
@@ -324,7 +334,5 @@ export async function setReadingList(chosenBook, userID) {
   } else {
     console.log("Book is already in the reading list.", chosenBook);
   }
-
-  
 }
 //------------------------_______________------------------------------

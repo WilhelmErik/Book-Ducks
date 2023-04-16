@@ -15,6 +15,10 @@ header #user-div {
   flex-direction: row;
 }
 
+.bp-button {
+  font-size: 24px;
+}
+
 #index-page {
   display: grid;
 }
@@ -36,7 +40,7 @@ header #user-div {
   margin: 10px;
 }
 #all-books img {
-  height: 200px;
+  height: 220px;
 }
 
 #entry {

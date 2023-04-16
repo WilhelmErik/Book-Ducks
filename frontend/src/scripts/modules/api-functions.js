@@ -275,3 +275,12 @@ export function calcRating(userRatings) {
 }
 
 //----------------------------------------------------------------
+
+//Add book to a users readinglist
+export async function setReadingList() {
+
+  
+}
+
+//get the books from users readinglist
+export async function getReadingList() {}

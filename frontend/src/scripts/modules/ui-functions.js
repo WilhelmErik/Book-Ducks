@@ -108,7 +108,8 @@ export async function renderIndex() {
         "http://localhost:1337" +
         book.attributes.book_cover.data.attributes.formats.small.url;
       document.getElementById("all-books").appendChild(divvy);
-      document.getElementById(book.attributes.title).appendChild(title);
+      //not sure i want to display title on index
+      // document.getElementById(book.attributes.title).appendChild(title);
       document.getElementById(book.attributes.title).appendChild(cover);
     }
   });
@@ -157,7 +158,7 @@ export async function renderBook(id) {
     "http://localhost:1337" +
     book.attributes.book_cover.data.attributes.formats.small.url;
   document.getElementById("book-cover").appendChild(divvy);
-  document.getElementById(book.id).appendChild(title);
+  // document.getElementById(book.id).appendChild(title);
   document.getElementById(book.id).appendChild(cover);
   //api function for fetchign selected book with clicked id
   //api function for fetching ratings

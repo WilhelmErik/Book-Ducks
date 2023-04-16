@@ -31,8 +31,9 @@ export const elements = {
 
   //---------------book page elements ---------------
   bookCover: document.getElementById("book-cover"),
-  bookCover: document.getElementById("book-cover"),
-  bookCover: document.getElementById("book-cover"),
+  addReading: document.getElementById("add-reading"),
+  addScore: document.getElementById("add-score"),
+  submitScore:document.getElementById("submit-score"),
 
   bpTitle: document.getElementById("bp-title"),
   bpAuthor: document.getElementById("bp-author"),

@@ -99,6 +99,7 @@ export async function renderProfile() {
     title.innerText = book.title;
     elements.readingList.appendChild(title);
   });
+  
   const ratedList = await getRatedBooks();
   console.log(ratedList, "rated booook");
   ratedList.forEach((ratedBook) => {

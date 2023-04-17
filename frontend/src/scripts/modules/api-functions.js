@@ -259,7 +259,7 @@ export async function getRatedBooks() {
   // console.log(ratings.length());
   const userID = sessionStorage.getItem("userID");
   const res = await fetch(
-    `${baseAPI}users/${userID}?populate=book_ratings.book`,
+    `${baseAPI}users/${userID}?populate=book_ratings.book.book_cover`,
     {
       method: "GET",
       headers: {

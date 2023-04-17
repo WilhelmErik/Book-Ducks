@@ -56,6 +56,7 @@ td{
 #profile-page{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: start;
 }
 
 #entry {
@@ -67,9 +68,9 @@ td{
 
 }
 #reading-list,#rated-list{
-    align-self: center;
-    margin: auto;
-    text-align: left;
+    
+    // text-align: left;
+    background-color: beige;
 }
 
 

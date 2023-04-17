@@ -244,6 +244,8 @@ export async function checkRating() {
       console.log(false, "has not rated book");
       setRating();
     }
+
+    // return hasRated;
   } catch (error) {
     console.error("Error in setRating function:", error);
     throw error;
@@ -323,8 +325,9 @@ export async function getReadingList() {
     );
     const data = await response.json();
 
+    console.log(data, "What the books could look like");
     const readingList = data.to_reads;
-    console.log(readingList, "her babaeriba");
+    // console.log(readingList, "her babaeriba");
     return readingList;
   } catch (error) {
     console.error("Error fetching user reading list:", error);

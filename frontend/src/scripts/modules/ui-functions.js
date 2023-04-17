@@ -89,7 +89,6 @@ export async function renderProfile() {
 
   console.log(readingList, "the list");
   hideAll();
-  elements.profilePage.style.display = "grid";
 
   readingList.forEach(async (book) => {
     const row = await printBookRow(book);
@@ -99,17 +98,22 @@ export async function renderProfile() {
     title.innerText = book.title;
     elements.readingList.appendChild(title);
   });
-  
+
   const ratedList = await getRatedBooks();
   console.log(ratedList, "rated booook");
-  ratedList.forEach((ratedBook) => {
+  ratedList.forEach(async (ratedBook) => {
+    const row = await printBookRow(ratedBook.book, ratedBook.rating);
+    document.getElementById("rated-list-tbody").appendChild(row);
     let title = document.createElement("li");
     title.innerText = ratedBook.book.title + "|Your rating:" + ratedBook.rating;
     elements.ratedList.appendChild(title);
   });
+
+  elements.profilePage.style.display = "grid";
+  // elements.profilePage.style.alignItems = "start";
 }
 
-export async function printBookRow(book) {
+export async function printBookRow(book, rating) {
   const row = document.createElement("tr");
 
   const tdCover = document.createElement("td");
@@ -137,7 +141,7 @@ export async function printBookRow(book) {
   row.appendChild(tdAvgRating);
 
   const tdUserRating = document.createElement("td");
-  tdUserRating.innerText = "we will see";
+  tdUserRating.innerText = rating;
   row.appendChild(tdUserRating);
 
   return row;

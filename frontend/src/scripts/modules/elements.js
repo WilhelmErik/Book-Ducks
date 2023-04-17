@@ -32,6 +32,8 @@ export const elements = {
 
   //----------- profile page elements
   readingList: document.getElementById("reading-list"),
+  readingListBody: document.getElementById("reading-list-tbody"),
+  ratedListBody: document.getElementById("rated-list-tbody"),
   ratedList: document.getElementById("rated-list"),
 
   //-----------

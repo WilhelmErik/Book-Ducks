@@ -89,14 +89,12 @@ export async function renderProfile() {
 
   console.log(readingList, "the list");
   hideAll();
+  elements.ratedListBody.innerHTML = "";
+  elements.readingListBody.innerHTML = "";
 
   readingList.forEach(async (book) => {
     const row = await printBookRow(book);
     document.getElementById("reading-list-tbody").appendChild(row);
-
-    let title = document.createElement("li");
-    title.innerText = book.title;
-    elements.readingList.appendChild(title);
   });
 
   const ratedList = await getRatedBooks();
@@ -104,9 +102,6 @@ export async function renderProfile() {
   ratedList.forEach(async (ratedBook) => {
     const row = await printBookRow(ratedBook.book, ratedBook.rating);
     document.getElementById("rated-list-tbody").appendChild(row);
-    let title = document.createElement("li");
-    title.innerText = ratedBook.book.title + "|Your rating:" + ratedBook.rating;
-    elements.ratedList.appendChild(title);
   });
 
   elements.profilePage.style.display = "grid";
@@ -140,10 +135,11 @@ export async function printBookRow(book, rating) {
 
   row.appendChild(tdAvgRating);
 
-  const tdUserRating = document.createElement("td");
-  tdUserRating.innerText = rating;
-  row.appendChild(tdUserRating);
-
+  if (rating) {
+    const tdUserRating = document.createElement("td");
+    tdUserRating.innerText = rating;
+    row.appendChild(tdUserRating);
+  }
   return row;
 }
 

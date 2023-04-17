@@ -55,7 +55,7 @@ elements.indexPage.addEventListener("click", (e) => {
 // });
 
 elements.submitScore.addEventListener("click", (e) => {
-  checkRating();
+  checkRating(elements.bookPage.dataset.id);
   renderBook(elements.bookPage.dataset.id);
 });
 

@@ -216,9 +216,9 @@ export async function changeRating(ratingID) {
 }
 
 //checks if the active user has rated the book or not, calls function accordingly
-export async function checkRating() {
+export async function checkRating(chosenBook, returnRatingObject) {
   const userID = sessionStorage.getItem("userID");
-  let chosenBook = elements.bookPage.dataset.id;
+  // let chosenBook = elements.bookPage.dataset.id;
   try {
     const response = await fetch(
       `${baseAPI}books/${chosenBook}?populate=user_rating.user`
@@ -234,6 +234,7 @@ export async function checkRating() {
     });
 
     console.log(hasRated, "rating object");
+    if (returnRatingObject) return hasRated;
 
     if (hasRated) {
       console.log(true, "has rated");

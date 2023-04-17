@@ -10,6 +10,7 @@ import {
   setReadingList,
   getReadingList,
   getRatedBooks,
+  checkRating,
 } from "./api-functions.js";
 
 export function displayRegister() {
@@ -93,7 +94,9 @@ export async function renderProfile() {
   elements.readingListBody.innerHTML = "";
 
   readingList.forEach(async (book) => {
-    const row = await printBookRow(book);
+    const hasRated = await checkRating(book.id, true);
+    console.log(hasRated, "has Rated???", hasRated.attributes.rating);
+    const row = await printBookRow(book, hasRated.attributes.rating);
     document.getElementById("reading-list-tbody").appendChild(row);
   });
 

@@ -74,6 +74,12 @@ function addAuthEvents() {
   elements.displayLogin.addEventListener("click", displayLogin);
   elements.displayRegister.addEventListener("click", displayRegister);
   elements.loginBtn.addEventListener("click", login);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      login();
+    }
+  });
+
   elements.registerBtn.addEventListener("click", register);
 }
 
@@ -84,7 +90,11 @@ export async function renderProfile() {
   console.log(readingList, "the list");
   hideAll();
   elements.profilePage.style.display = "grid";
-  readingList.forEach((book) => {
+
+  readingList.forEach(async (book) => {
+    const row = await printBookRow(book);
+    document.getElementById("reading-list-tbody").appendChild(row);
+
     let title = document.createElement("li");
     title.innerText = book.title;
     elements.readingList.appendChild(title);
@@ -96,7 +106,40 @@ export async function renderProfile() {
     title.innerText = ratedBook.book.title + "|Your rating:" + ratedBook.rating;
     elements.ratedList.appendChild(title);
   });
+}
 
+export async function printBookRow(book) {
+  const row = document.createElement("tr");
+
+  const tdCover = document.createElement("td");
+  const cover = document.createElement("img");
+  cover.src = "http://localhost:1337" + book.book_cover.formats.thumbnail.url;
+  cover.width = 50;
+  tdCover.appendChild(cover);
+  row.appendChild(tdCover);
+
+  const tdTitle = document.createElement("td");
+  tdTitle.innerText = book.title;
+  row.appendChild(tdTitle);
+
+  const tdAuthor = document.createElement("td");
+  tdAuthor.innerText = book.author;
+  row.appendChild(tdAuthor);
+
+  const tdAvgRating = document.createElement("td");
+  let ratings = await getBookRatings(book.id);
+  let calced = calcRating(ratings);
+  let { averageRating } = calced;
+
+  tdAvgRating.innerText = averageRating;
+
+  row.appendChild(tdAvgRating);
+
+  const tdUserRating = document.createElement("td");
+  tdUserRating.innerText = "we will see";
+  row.appendChild(tdUserRating);
+
+  return row;
 }
 
 //renders the main page
@@ -197,6 +240,4 @@ function clearAll() {
   elements.ratedList.innerHTML = "";
 }
 
-async function renderBookList(){
-  
-}
+async function renderBookList() {}

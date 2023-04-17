@@ -20,7 +20,8 @@ export function logoutUser() {
   hideAll();
   renderIndex();
   elements.activeUser.innerText = "";
-  elements.readingList.innerHTML = "";
+  // elements.readingList.innerHTML = "";
+  document.getElementById("reading-list-tbody");
   elements.ratedList.innerHTML = "";
 }
 
@@ -107,7 +108,7 @@ export async function login() {
     console.log(userData, "data2");
 
     clearInput();
-    alert("welcome");
+    // alert("welcome");
     hideAll();
     isLoggedIn();
     renderIndex();
@@ -310,13 +311,16 @@ export function calcRating(userRatings) {
 //get the books from users readinglist
 export async function getReadingList() {
   try {
-    const response = await fetch(`${baseAPI}users/me?populate=to_reads`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      `${baseAPI}users/me?populate=to_reads.book_cover`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      }
+    );
     const data = await response.json();
 
     const readingList = data.to_reads;

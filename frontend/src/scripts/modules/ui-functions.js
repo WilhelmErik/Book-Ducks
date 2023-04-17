@@ -95,8 +95,9 @@ export async function renderProfile() {
 
   readingList.forEach(async (book) => {
     const hasRated = await checkRating(book.id, true);
-    console.log(hasRated, "has Rated???", hasRated.attributes.rating);
-    const row = await printBookRow(book, hasRated.attributes.rating);
+    // console.log(hasRated, "has Rated???", hasRated.attributes.rating);
+    const ifRated = hasRated ? hasRated.attributes.rating : false;
+    const row = await printBookRow(book, ifRated);
     document.getElementById("reading-list-tbody").appendChild(row);
   });
 

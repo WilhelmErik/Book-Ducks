@@ -19,7 +19,9 @@ export function logoutUser() {
   isLoggedIn();
   hideAll();
   renderIndex();
-  document.getElementById("active-user").innerText = "";
+  elements.activeUser.innerText = "";
+  elements.readingList.innerHTML = "";
+  elements.ratedList.innerHTML = "";
 }
 
 export async function isLoggedIn() {
@@ -345,3 +347,5 @@ export async function setReadingList(chosenBook, userID) {
   }
 }
 //------------------------_______________------------------------------
+
+export async function getTheme() {}

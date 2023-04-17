@@ -97,12 +97,6 @@ export async function renderProfile() {
     elements.ratedList.appendChild(title);
   });
 
-  //clear everything aside from the header
-  //take the stored id and jwt token and fetch the user
-  // fetch the items from reading list
-  //either fetch them one by one or all at once
-  //api function for fetching user
-  //api function for fetchign reading list items with users ID
 }
 
 //renders the main page
@@ -197,4 +191,12 @@ export function hideAll() {
   elements.profilePage.style.display = "none";
   elements.authPage.style.display = "none";
   elements.bookPage.style.display = "none";
+}
+function clearAll() {
+  elements.readingList.innerHTML = "";
+  elements.ratedList.innerHTML = "";
+}
+
+async function renderBookList(){
+  
 }

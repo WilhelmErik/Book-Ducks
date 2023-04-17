@@ -22,10 +22,20 @@ header{
    
     display: grid;
 }
+
+td{
+    text-align: start;
+    border: 1px black solid;
+}
 #book-page{
     display: grid; 
    grid-template-columns: 1fr 1fr;
     border: 2px black solid;
+    padding: 10px;
+
+    #book-right{
+        text-align: left;
+    }
 }
 #all-books{
     

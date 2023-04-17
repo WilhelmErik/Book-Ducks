@@ -80,6 +80,7 @@ function addAuthEvents() {
 //renders the profile page
 export async function renderProfile() {
   const readingList = await getReadingList();
+
   console.log(readingList, "the list");
   hideAll();
   elements.profilePage.style.display = "grid";
@@ -89,7 +90,13 @@ export async function renderProfile() {
     elements.readingList.appendChild(title);
   });
   const ratedList = await getRatedBooks();
-  console.log(ratedList);
+  console.log(ratedList, "rated booook");
+  ratedList.forEach((ratedBook) => {
+    let title = document.createElement("li");
+    title.innerText = ratedBook.book.title + "|Your rating:" + ratedBook.rating;
+    elements.ratedList.appendChild(title);
+  });
+
   //clear everything aside from the header
   //take the stored id and jwt token and fetch the user
   // fetch the items from reading list

@@ -43,13 +43,18 @@ header #user-div {
   height: 220px;
 }
 
+#profile-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 #entry {
   display: grid;
   border: black solid 2px;
   margin: auto;
 }
 
-#reading-list {
+#reading-list, #rated-list {
   align-self: center;
   margin: auto;
   text-align: left;

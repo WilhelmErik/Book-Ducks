@@ -38,12 +38,14 @@ export async function isLoggedIn() {
     elements.addScore.style.display = "inherit";
     elements.addReading.style.display = "initial";
     // console.log(data, "hejsan svejsan");
+    return true;
   } else {
     elements.logoutBtn.style.display = "none";
     elements.authBtn.style.display = "inherit";
 
     elements.addScore.style.display = "none";
     elements.addReading.style.display = "none";
+    return false;
   }
 }
 
@@ -264,9 +266,10 @@ export async function getRatedBooks() {
     }
   );
   let data = await res.json();
-  console.log(data.book_ratings, "these are the books you have rated");
+  // console.log(data.book_ratings, "these are the books you have rated");
+  return data.book_ratings;
 }
-
+// retrieves all ratings of chosen book
 export async function getBookRatings(chosenBook) {
   const res = await fetch(`${baseAPI}books/${chosenBook}?populate=user_rating`);
   const data = await res.json();

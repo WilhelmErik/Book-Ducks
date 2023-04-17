@@ -88,7 +88,8 @@ export async function renderProfile() {
     title.innerText = book.title;
     elements.readingList.appendChild(title);
   });
-  await getRatedBooks();
+  const ratedList = await getRatedBooks();
+  console.log(ratedList);
   //clear everything aside from the header
   //take the stored id and jwt token and fetch the user
   // fetch the items from reading list

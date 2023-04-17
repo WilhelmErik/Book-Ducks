@@ -17,6 +17,7 @@ export function logoutUser() {
   sessionStorage.removeItem("token");
   sessionStorage.removeItem("userID");
   isLoggedIn();
+  hideAll();
   renderIndex();
   document.getElementById("active-user").innerText = "";
 }
@@ -27,17 +28,22 @@ export async function isLoggedIn() {
   if (token !== null) {
     elements.logoutBtn.style.display = "inherit";
     elements.authBtn.style.display = "none";
+
     let userData = await getActiveUser();
     elements.activeUser.innerText = userData.username;
     elements.activeUser.addEventListener("click", (e) => {
       renderProfile();
       console.log("hej, lets do smth");
     });
-
+    elements.addScore.style.display = "inherit";
+    elements.addReading.style.display = "initial";
     // console.log(data, "hejsan svejsan");
   } else {
     elements.logoutBtn.style.display = "none";
     elements.authBtn.style.display = "inherit";
+
+    elements.addScore.style.display = "none";
+    elements.addReading.style.display = "none";
   }
 }
 

@@ -55,6 +55,7 @@ elements.indexPage.addEventListener("click", (e) => {
 // });
 
 elements.submitScore.addEventListener("click", (e) => {
+  // window.confirm("Do you really want to vote?")
   checkRating(elements.bookPage.dataset.id);
   renderBook(elements.bookPage.dataset.id);
 });
@@ -73,3 +74,15 @@ elements.submitScore.addEventListener("click", (e) => {
 // elements.displayRegister.addEventListener("click", displayRegister);
 // elements.loginBtn.addEventListener("click", login);
 // elements.registerBtn.addEventListener("click", register);
+
+anArray.sort((a,b)=>{
+  a -b ; //if a is less than b , return -1
+  //if the result is negative, a must be less than b and thus be placed before it in the array
+
+})
+
+//funktion som kommer att hämta rated of reading
+//på någotvis kolla och spara hur listorna ska visas, och i vilken ordning
+//skriva en funktion som sorterar
+//sorta listorna
+//använda listorna som argument till renderProfile

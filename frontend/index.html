@@ -47,7 +47,7 @@
                 <th>title</th>
                 <th>author</th>
                 <th>avg rating</th>
-                <th>rating</th>
+                <th>your rating</th>
               </tr>
             </thead>
             <tbody id="reading-list-tbody"></tbody>
@@ -62,11 +62,11 @@
           <table>
             <thead id="rated-list-thead">
               <tr>
-                <th>cover <img src="" alt="" /></th>
-                <th>title</th>
-                <th>author</th>
-                <th>avg rating</th>
-                <th>rating</th>
+                <th id="rated-list-cover">cover <img src="" alt="" /></th>
+                <th id="rated-list-title">title</th>
+                <th id="rated-list-author">author</th>
+                <th id="rated-list-avg-rating">avg rating</th>
+                <th id="rated-list-user-rating">your rating</th>
               </tr>
             </thead>
             <tbody id="rated-list-tbody"></tbody>
@@ -140,7 +140,13 @@
               <option value="5">5</option>
             </select>
             <!-- <button id="set-score">set Score</button> -->
-            <button id="submit-score" class="bp-button">Submit Score</button>
+            <button
+              id="submit-score"
+              class="bp-button"
+              data-confirm="Are you sure?"
+            >
+              Submit Score
+            </button>
           </div>
         </div>
         <div id="book-right">

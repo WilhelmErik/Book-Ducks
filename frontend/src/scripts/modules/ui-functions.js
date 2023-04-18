@@ -102,6 +102,7 @@ export async function renderProfile() {
   });
 
   const ratedList = await getRatedBooks();
+  
   console.log(ratedList, "rated booook");
   ratedList.forEach(async (ratedBook) => {
     const row = await printBookRow(ratedBook.book, ratedBook.rating);

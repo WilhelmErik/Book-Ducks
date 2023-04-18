@@ -9,6 +9,7 @@ import {
   renderProfile,
   renderBook,
   renderAuth,
+  sortAndRender,
 } from "./ui-functions.js";
 const baseAPI = "http://localhost:1337/api/";
 const header = { "Content-Type": "application/json" };
@@ -35,7 +36,9 @@ export async function isLoggedIn() {
     let userData = await getActiveUser();
     elements.activeUser.innerText = userData.username;
     elements.activeUser.addEventListener("click", (e) => {
-      renderProfile();
+      // renderProfile();
+      sortAndRender()
+
       console.log("hej, lets do smth");
     });
     elements.addScore.style.display = "inherit";
@@ -280,12 +283,12 @@ export async function getBookRatings(chosenBook) {
   const res = await fetch(`${baseAPI}books/${chosenBook}?populate=user_rating`);
   const data = await res.json();
   const userRatings = data.data.attributes.user_rating.data;
-  console.log(userRatings, "checking all the ratings");
+  // console.log(userRatings, "checking all the ratings");
   return userRatings;
 }
 
 export function calcRating(userRatings) {
-  console.log(userRatings, "inside calcrating");
+  // console.log(userRatings, "inside calcrating");
   const rateAmount = userRatings.length;
 
   if (rateAmount === 0) {
@@ -296,9 +299,9 @@ export function calcRating(userRatings) {
     });
 
     let scoreTotal = rateValues.reduce((accum, current) => accum + current);
-    console.log(scoreTotal, "scoreTotal");
+    // console.log(scoreTotal, "scoreTotal");
     let averageRating = scoreTotal / rateAmount;
-    console.log(averageRating, "Average rating");
+    // console.log(averageRating, "Average rating");
     // return averageRating;
     return { averageRating: averageRating, totalVoters: rateAmount };
     // console.log(ratings.length());

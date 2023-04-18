@@ -7,6 +7,7 @@ import {
   renderBook,
   renderAuth,
   renderProfile,
+  sortAndRender,
 } from "./modules/ui-functions.js";
 import {
   register,

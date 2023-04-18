@@ -85,22 +85,37 @@ function addAuthEvents() {
 }
 
 //renders the profile page
-export async function renderProfile() {
-  const readingList = await getReadingList();
-  const ratedList = await getRatedBooks();
+export async function renderProfile(readingList, ratedList) {
+  // const readingList = await getReadingList();
+  // const ratedList = await getRatedBooks();
+  document.getElementById("rated-list-title").addEventListener("click", () => {
+    sortAndRender("title");
+  });
+  document.getElementById("rated-list-author").addEventListener("click", () => {
+    sortAndRender("author");
+  });
+  document
+    .getElementById("rated-list-avg-rating")
+    .addEventListener("click", () => {
+      sortAndRender("avg");
+    });
+  ///
 
   console.log(readingList, "the list");
   hideAll();
   elements.ratedListBody.innerHTML = "";
   elements.readingListBody.innerHTML = "";
+  console.log("i should only be here once");
 
-  readingList.forEach(async (book) => {
+  for (const book of readingList) {
     const hasRated = await checkRating(book.id, true);
     // console.log(hasRated, "has Rated???", hasRated.attributes.rating);
-    const ifRated = hasRated ? hasRated.attributes.rating : false;
+    const ifRated = hasRated ? hasRated.attributes.rating : 0;
     const row = await printBookRow(book, ifRated);
     document.getElementById("reading-list-tbody").appendChild(row);
-  });
+  }
+
+  readingList.forEach(async (book) => {});
 
   console.log(ratedList, "rated booook");
   ratedList.forEach(async (ratedBook) => {
@@ -245,31 +260,43 @@ function clearAll() {
   elements.ratedList.innerHTML = "";
 }
 
-async function renderBookList() {}
+// async function renderBookList() {}
 
-export async function fetchAndSort(column) {
+export async function sortAndRender(column) {
   const readingList = await getReadingList();
   const ratedList = await getRatedBooks();
+  elements.ratedListBody.innerHTML = "";
+  elements.readingListBody.innerHTML = "";
 
   // applying average rating of each book object instead of calculating while printing
   for (const book of readingList) {
-    let ratings = await getBookRatings(book.id);
-    let calced = calcRating(ratings);
-    let { averageRating } = calced;
+    const ratings = await getBookRatings(book.id);
+    const calced = calcRating(ratings);
+    book.averageRating = calced.averageRating;
   }
-  for (const book of ratedList) {
-    let ratings = await getBookRatings(book.id);
-    let calced = calcRating(ratings);
-    let { averageRating } = calced;
+  for (const ratedBook of ratedList) {
+    const ratings = await getBookRatings(ratedBook.book.id);
+    const calced = calcRating(ratings);
+    ratedBook.book.averageRating = calced.averageRating;
   }
+  //get thje sorting function to be used in the .sort method
+  if (column) {
+    let sortFunction = getSortingFunction(column);
+    readingList.sort((a, b) => sortFunction(a, b));
+    ratedList.sort((a, b) => sortFunction(a.book, b.book));
+  }
+
+  renderProfile(readingList, ratedList);
 }
 
 //different functions that depending on whcih column user click, will return a sorting function to be passed into the .sort method
 
-export async function getSortingFunction(column) {
+export function getSortingFunction(column) {
   if (column === "title") {
     return (a, b) => a.title.localeCompare(b.title);
   } else if (column === "author") {
     return (a, b) => a.author.localeCompare(b.author);
+  } else if (column === "avg") {
+    return (a, b) => a.averageRating - b.averageRating;
   }
 }

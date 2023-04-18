@@ -71,14 +71,7 @@ elements.submitScore.addEventListener("click", (e) => {
 
 //event listener for all the books, which will show the clicked book
 
-// elements.displayLogin.addEventListener("click", displayLogin);
-// elements.displayRegister.addEventListener("click", displayRegister);
-// elements.loginBtn.addEventListener("click", login);
-// elements.registerBtn.addEventListener("click", register);
 
-// anArray.sort((a,b)=>{
-//   a -b ; //if a is less than b , return -1
-//   //if the result is negative, a must be less than b and thus be placed before it in the array
 
 // })
 

@@ -104,14 +104,16 @@ export async function renderProfile(readingList, ratedList) {
     const row = await printBookRow(book, ifRated);
     document.getElementById("reading-list-tbody").appendChild(row);
   }
+  // readingList.forEach(async (book) => {});
 
-  readingList.forEach(async (book) => {});
+  // console.log(ratedList, "rated booook");
 
-  console.log(ratedList, "rated booook");
-  ratedList.forEach(async (ratedBook) => {
+  for (const ratedBook of ratedList) {
     const row = await printBookRow(ratedBook.book, ratedBook.rating);
     document.getElementById("rated-list-tbody").appendChild(row);
-  });
+  }
+
+  // ratedList.forEach(async (ratedBook) => {});
 
   elements.profilePage.style.display = "grid";
   // elements.profilePage.style.alignItems = "start";
@@ -255,8 +257,6 @@ function clearAll() {
 export async function sortAndRender(column) {
   const readingList = await getReadingList();
   const ratedList = await getRatedBooks();
-  elements.ratedListBody.innerHTML = "";
-  elements.readingListBody.innerHTML = "";
 
   // applying average rating of each book object instead of calculating while printing
   for (const book of readingList) {
@@ -268,6 +268,7 @@ export async function sortAndRender(column) {
     const ratings = await getBookRatings(ratedBook.book.id);
     const calced = calcRating(ratings);
     ratedBook.book.averageRating = calced.averageRating;
+    ratedBook.book.userRating = ratedBook.rating;
   }
   //get thje sorting function to be used in the .sort method
   if (column) {
@@ -275,6 +276,7 @@ export async function sortAndRender(column) {
     readingList.sort((a, b) => sortFunction(a, b));
     ratedList.sort((a, b) => sortFunction(a.book, b.book));
   }
+  console.log(readingList, ratedList, "testing things");
 
   renderProfile(readingList, ratedList);
 }

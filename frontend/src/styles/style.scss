@@ -1,6 +1,8 @@
 body {
     text-align: center;
     margin: 0px;
+    height:100vh;
+    // background-color: rgb(75, 64, 64);
 }
 header{
     border-bottom: black 2px solid ;
@@ -41,7 +43,7 @@ td{
     
     display: flex;
     flex-wrap: wrap;
-    overflow: scroll;
+   
     justify-content: center;
     div{
         border: black solid 1px;
@@ -50,7 +52,7 @@ td{
     }
 
     img{
-        height: 220px;
+        height: 240px;
     }
 }
 #profile-page{

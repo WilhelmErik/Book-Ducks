@@ -87,6 +87,8 @@ elements.submitScore.addEventListener("click", (e) => {
 //skriva en funktion som sorterar
 //sorta listorna
 //använda listorna som argument till renderProfile
+
+//temp place for adding event listeners to tables
 document.getElementById("rated-list-title").addEventListener("click", () => {
   sortAndRender("title");
 });
@@ -95,6 +97,18 @@ document.getElementById("rated-list-author").addEventListener("click", () => {
 });
 document
   .getElementById("rated-list-avg-rating")
+  .addEventListener("click", () => {
+    sortAndRender("avgRating");
+  });
+
+document.getElementById("reading-list-title").addEventListener("click", () => {
+  sortAndRender("title");
+});
+document.getElementById("reading-list-author").addEventListener("click", () => {
+  sortAndRender("author");
+});
+document
+  .getElementById("reading-list-avg-rating")
   .addEventListener("click", () => {
     sortAndRender("avgRating");
   });

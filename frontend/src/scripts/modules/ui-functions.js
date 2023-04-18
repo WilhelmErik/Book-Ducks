@@ -13,6 +13,8 @@ import {
   checkRating,
 } from "./api-functions.js";
 
+
+
 export function displayRegister() {
   elements.mailDiv.style = "display:block";
   elements.registerBtn.style = "display:block";
@@ -102,7 +104,7 @@ export async function renderProfile() {
   });
 
   const ratedList = await getRatedBooks();
-  
+
   console.log(ratedList, "rated booook");
   ratedList.forEach(async (ratedBook) => {
     const row = await printBookRow(ratedBook.book, ratedBook.rating);
@@ -247,3 +249,17 @@ function clearAll() {
 }
 
 async function renderBookList() {}
+
+
+
+export async function fetchAndSort(column){
+
+
+
+}
+
+export async function getSortingFunction(column){
+
+  
+
+}

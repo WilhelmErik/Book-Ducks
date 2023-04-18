@@ -71,7 +71,7 @@ td{
 #reading-list,#rated-list{
     
     // text-align: left;
-    background-color: beige;
+    background-color: rgba(246, 148, 0, 0.234);
 }
 
 
@@ -170,3 +170,19 @@ input[type='password'] {
 .login-register {
     grid-area: login-register;
 } */
+
+@media screen and ( max-width: 768px){
+    #profile-page{
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
+        
+        gap: 20px;
+
+        #reading-list,#rated-list{
+            display: grid;
+            justify-content: center;
+        }
+    }
+    
+}

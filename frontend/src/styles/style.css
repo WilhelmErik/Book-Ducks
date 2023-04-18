@@ -66,7 +66,7 @@ td {
 }
 
 #reading-list, #rated-list {
-  background-color: beige;
+  background-color: rgba(246, 148, 0, 0.234);
 }
 
 .container {
@@ -163,4 +163,16 @@ input[type=password] {
 
 .login-register {
     grid-area: login-register;
-} *//*# sourceMappingURL=style.css.map */
+} */
+@media screen and (max-width: 768px) {
+  #profile-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 20px;
+  }
+  #profile-page #reading-list, #profile-page #rated-list {
+    display: grid;
+    justify-content: center;
+  }
+}/*# sourceMappingURL=style.css.map */

@@ -60,6 +60,8 @@ td{
     gap: 20px;
 }
 
+
+
 #entry {
     display: grid;
     border: black solid 2px;
@@ -185,4 +187,9 @@ input[type='password'] {
         }
     }
     
+    #book-cover{
+        img{
+            max-width: 90%;
+        }
+    }
 }

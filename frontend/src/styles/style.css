@@ -175,4 +175,7 @@ input[type=password] {
     display: grid;
     justify-content: center;
   }
+  #book-cover img {
+    max-width: 90%;
+  }
 }/*# sourceMappingURL=style.css.map */

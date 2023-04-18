@@ -13,8 +13,6 @@ import {
   checkRating,
 } from "./api-functions.js";
 
-
-
 export function displayRegister() {
   elements.mailDiv.style = "display:block";
   elements.registerBtn.style = "display:block";
@@ -89,6 +87,7 @@ function addAuthEvents() {
 //renders the profile page
 export async function renderProfile() {
   const readingList = await getReadingList();
+  const ratedList = await getRatedBooks();
 
   console.log(readingList, "the list");
   hideAll();
@@ -102,8 +101,6 @@ export async function renderProfile() {
     const row = await printBookRow(book, ifRated);
     document.getElementById("reading-list-tbody").appendChild(row);
   });
-
-  const ratedList = await getRatedBooks();
 
   console.log(ratedList, "rated booook");
   ratedList.forEach(async (ratedBook) => {
@@ -250,16 +247,29 @@ function clearAll() {
 
 async function renderBookList() {}
 
+export async function fetchAndSort(column) {
+  const readingList = await getReadingList();
+  const ratedList = await getRatedBooks();
 
-
-export async function fetchAndSort(column){
-
-
-
+  // applying average rating of each book object instead of calculating while printing
+  for (const book of readingList) {
+    let ratings = await getBookRatings(book.id);
+    let calced = calcRating(ratings);
+    let { averageRating } = calced;
+  }
+  for (const book of ratedList) {
+    let ratings = await getBookRatings(book.id);
+    let calced = calcRating(ratings);
+    let { averageRating } = calced;
+  }
 }
 
-export async function getSortingFunction(column){
+//different functions that depending on whcih column user click, will return a sorting function to be passed into the .sort method
 
-  
-
+export async function getSortingFunction(column) {
+  if (column === "title") {
+    return (a, b) => a.title.localeCompare(b.title);
+  } else if (column === "author") {
+    return (a, b) => a.author.localeCompare(b.author);
+  }
 }

@@ -87,3 +87,14 @@ elements.submitScore.addEventListener("click", (e) => {
 //skriva en funktion som sorterar
 //sorta listorna
 //använda listorna som argument till renderProfile
+document.getElementById("rated-list-title").addEventListener("click", () => {
+  sortAndRender("title");
+});
+document.getElementById("rated-list-author").addEventListener("click", () => {
+  sortAndRender("author");
+});
+document
+  .getElementById("rated-list-avg-rating")
+  .addEventListener("click", () => {
+    sortAndRender("avgRating");
+  });

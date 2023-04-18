@@ -88,17 +88,7 @@ function addAuthEvents() {
 export async function renderProfile(readingList, ratedList) {
   // const readingList = await getReadingList();
   // const ratedList = await getRatedBooks();
-  document.getElementById("rated-list-title").addEventListener("click", () => {
-    sortAndRender("title");
-  });
-  document.getElementById("rated-list-author").addEventListener("click", () => {
-    sortAndRender("author");
-  });
-  document
-    .getElementById("rated-list-avg-rating")
-    .addEventListener("click", () => {
-      sortAndRender("avg");
-    });
+
   ///
 
   console.log(readingList, "the list");
@@ -296,7 +286,9 @@ export function getSortingFunction(column) {
     return (a, b) => a.title.localeCompare(b.title);
   } else if (column === "author") {
     return (a, b) => a.author.localeCompare(b.author);
-  } else if (column === "avg") {
-    return (a, b) => a.averageRating - b.averageRating;
+  } else if (column === "avgRating") {
+    return (a, b) => b.averageRating - a.averageRating;
+  } else if (column === "userRating") {
+    return (a, b) => b.averageRating - a.averageRating;
   }
 }

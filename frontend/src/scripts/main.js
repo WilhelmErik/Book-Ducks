@@ -112,3 +112,8 @@ document
   .addEventListener("click", () => {
     sortAndRender("avgRating");
   });
+document
+  .getElementById("rated-list-user-rating")
+  .addEventListener("click", () => {
+    sortAndRender("userRating");
+  });

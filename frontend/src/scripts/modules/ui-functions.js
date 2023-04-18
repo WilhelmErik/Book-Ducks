@@ -98,10 +98,10 @@ export async function renderProfile(readingList, ratedList) {
   console.log("i should only be here once");
 
   for (const book of readingList) {
-    const hasRated = await checkRating(book.id, true);
-    // console.log(hasRated, "has Rated???", hasRated.attributes.rating);
-    const ifRated = hasRated ? hasRated.attributes.rating : 0;
-    const row = await printBookRow(book, ifRated);
+    // const hasRated = await checkRating(book.id, true);
+    // // console.log(hasRated, "has Rated???", hasRated.attributes.rating);
+    // const ifRated = hasRated ? hasRated.attributes.rating : 0;
+    const row = await printBookRow(book, book.userRating);
     document.getElementById("reading-list-tbody").appendChild(row);
   }
   // readingList.forEach(async (book) => {});
@@ -263,6 +263,10 @@ export async function sortAndRender(column) {
     const ratings = await getBookRatings(book.id);
     const calced = calcRating(ratings);
     book.averageRating = calced.averageRating;
+
+    const hasRated = await checkRating(book.id, true);
+    const ifRated = hasRated ? hasRated.attributes.rating : 0;
+    book.userRating = ifRated;
   }
   for (const ratedBook of ratedList) {
     const ratings = await getBookRatings(ratedBook.book.id);
@@ -291,6 +295,6 @@ export function getSortingFunction(column) {
   } else if (column === "avgRating") {
     return (a, b) => b.averageRating - a.averageRating;
   } else if (column === "userRating") {
-    return (a, b) => b.averageRating - a.averageRating;
+    return (a, b) => b.userRating - a.userRating;
   }
 }

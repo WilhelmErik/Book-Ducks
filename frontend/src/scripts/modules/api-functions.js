@@ -47,6 +47,8 @@ export async function isLoggedIn() {
     });
     elements.addScore.style.display = "inherit";
     elements.addReading.style.display = "initial";
+    document.getElementById("active-user").innerText =
+      userData.username + " | Profile";
     // console.log(data, "hejsan svejsan");
     return true;
   } else {
@@ -119,7 +121,8 @@ export async function login() {
     hideAll();
     isLoggedIn();
     renderIndex();
-    document.getElementById("active-user").innerText = userData.username;
+
+    console.log(userData.username, " is logged in ");
   } catch (error) {
     console.error(
       "Error during authentication:",

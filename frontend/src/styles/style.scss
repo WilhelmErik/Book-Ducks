@@ -11,6 +11,31 @@ h1 {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 header {
+  a {
+    color: rgb(213, 171, 21);
+    text-decoration: double;
+    stroke: rgb(255, 13, 0);
+    stroke-width: 5;
+  }
+  button {
+    padding: 10px;
+    border-radius: 16px;
+    border-color: rgb(255, 165, 127);
+    font-size: 24px;
+  }
+
+  #logout-button,
+  #auth-button {
+    /* position: absolute;
+          right: 10px;
+          top: 10px; */
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 16px;
+    border-color: rgb(255, 165, 127);
+    background-color: transparent;
+  }
+
   border-bottom: black 2px solid;
   display: flex;
 
@@ -39,9 +64,22 @@ header {
     text-align: left;
   }
 }
+
+#active-user {
+  cursor: pointer;
+  border-bottom: 2px rgb(160, 126, 42) solid;
+}
 .dark {
   background-color: rgb(42, 42, 42);
   color: white;
+
+  button {
+    color: white;
+  }
+
+  .login-register {
+    background-color: transparent;
+  }
 }
 
 .light {
@@ -135,6 +173,13 @@ header {
   padding: 20px;
   padding-left: 50px;
   padding-right: 50px;
+  font-size: 32px;
+  background-color: transparent;
+  border-width: 0 0 2px 0;
+  cursor: pointer;
+  &:hover {
+    background-color: #3838386b;
+  }
 }
 /* img{
   
@@ -148,17 +193,6 @@ input[type="text"],
 input[type="password"] {
   text-align: center;
   font-size: 24px;
-}
-
-#logout-button,
-#login-button {
-  /* position: absolute;
-    right: 10px;
-    top: 10px; */
-  padding: 10px;
-  font-size: 24px;
-  border-radius: 16px;
-  border-color: rgb(255, 165, 127);
 }
 
 #rated-list-title {
@@ -387,7 +421,7 @@ table {
     left: 0;
     white-space: nowrap;
     overflow: hidden;
-    color: gold;
+    color: #ffab02;
   }
 }
 

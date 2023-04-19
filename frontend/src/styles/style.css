@@ -18,6 +18,30 @@ header {
   justify-content: space-evenly;
   align-items: center;
 }
+header a {
+  color: rgb(213, 171, 21);
+  -webkit-text-decoration: double;
+          text-decoration: double;
+  stroke: rgb(255, 13, 0);
+  stroke-width: 5;
+}
+header button {
+  padding: 10px;
+  border-radius: 16px;
+  border-color: rgb(255, 165, 127);
+  font-size: 24px;
+}
+header #logout-button,
+header #auth-button {
+  /* position: absolute;
+        right: 10px;
+        top: 10px; */
+  padding: 10px;
+  font-size: 24px;
+  border-radius: 16px;
+  border-color: rgb(255, 165, 127);
+  background-color: transparent;
+}
 header #user-div {
   display: flex;
   flex-direction: row;
@@ -40,9 +64,20 @@ header #user-div {
   text-align: left;
 }
 
+#active-user {
+  cursor: pointer;
+  border-bottom: 2px rgb(160, 126, 42) solid;
+}
+
 .dark {
   background-color: rgb(42, 42, 42);
   color: white;
+}
+.dark button {
+  color: white;
+}
+.dark .login-register {
+  background-color: transparent;
 }
 
 .light {
@@ -120,6 +155,13 @@ header #user-div {
   padding: 20px;
   padding-left: 50px;
   padding-right: 50px;
+  font-size: 32px;
+  background-color: transparent;
+  border-width: 0 0 2px 0;
+  cursor: pointer;
+}
+.buttons button:hover {
+  background-color: rgba(56, 56, 56, 0.4196078431);
 }
 
 /* img{
@@ -134,17 +176,6 @@ input[type=text],
 input[type=password] {
   text-align: center;
   font-size: 24px;
-}
-
-#logout-button,
-#login-button {
-  /* position: absolute;
-    right: 10px;
-    top: 10px; */
-  padding: 10px;
-  font-size: 24px;
-  border-radius: 16px;
-  border-color: rgb(255, 165, 127);
 }
 
 #rated-list-title button {
@@ -309,7 +340,7 @@ table td img {
   left: 0;
   white-space: nowrap;
   overflow: hidden;
-  color: gold;
+  color: #ffab02;
 }
 
 @media screen and (max-width: 768px) {

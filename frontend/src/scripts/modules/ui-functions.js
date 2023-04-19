@@ -238,7 +238,7 @@ export async function renderBook(id) {
   document.getElementById("rating-stars-filled").style.width = `${percentage}%`;
 
   document.getElementById("bp-ratings").innerText =
-    +totalVoters + "total ratings";
+    +totalVoters + " total ratings";
 
   elements.bpPages.innerText = "pages:" + book.attributes.pages;
   elements.bpPublished.innerText = "published:" + book.attributes.release_date;

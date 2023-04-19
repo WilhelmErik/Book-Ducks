@@ -83,6 +83,8 @@ elements.submitScore.addEventListener("click", (e) => {
 
 //temp place for adding event listeners to tables
 
+
+
 // event listeners for ratinglist theads
 document.getElementById("rated-list-title").addEventListener("click", () => {
   sortAndRender("title");

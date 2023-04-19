@@ -51,8 +51,9 @@ header #user-div {
 
 #bp-author {
   color: rgb(177, 177, 177);
-  font-weight: bold;
-  font-size: 32;
+  font-weight: 400;
+  font-size: 24px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 #all-books {

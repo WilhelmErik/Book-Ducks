@@ -292,7 +292,7 @@ export async function sortAndRender(column) {
 
   renderProfile(readingList, ratedList);
 }
-
+// attempting to keep track of what order to sort columns in
 const sortingState = {
   title: "asc",
   author: "asc",
@@ -312,4 +312,4 @@ export function getSortingFunction(column) {
   }
 }
 
-// attempting to keep track of what order to sort columns in
+

@@ -85,8 +85,6 @@ elements.submitScore.addEventListener("click", (e) => {
 
 //temp place for adding event listeners to tables
 
-
-
 // event listeners for ratinglist theads
 document.getElementById("rated-list-title").addEventListener("click", () => {
   sortAndRender("title", "right");
@@ -122,3 +120,5 @@ document
   .addEventListener("click", () => {
     sortAndRender("userRating", "left");
   });
+
+//sortandrender will take a column as an argument for sorting, if it is falsy it will not sort, and pass the book arrays into renderProfile, the second argument is the table to render, which will render both by default, else a side if a side string is passed

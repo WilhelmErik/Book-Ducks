@@ -133,6 +133,10 @@ export async function printBookRow(book, rating, reading) {
   cover.width = 52;
   tdCover.appendChild(cover);
   row.appendChild(tdCover);
+  
+  tdCover.addEventListener("click", () => {
+        renderBook(book.id);
+      });
 
   const tdTitle = document.createElement("td");
   tdTitle.innerText = book.title;

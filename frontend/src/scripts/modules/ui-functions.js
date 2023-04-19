@@ -105,6 +105,9 @@ export async function renderProfile(readingList, ratedList) {
     // const ifRated = hasRated ? hasRated.attributes.rating : 0;
     const row = await printBookRow(book, book.userRating, true);
     document.getElementById("reading-list-tbody").appendChild(row);
+    row.addEventListener("click", () => {
+      renderBook(book.id);
+    });
   }
   // readingList.forEach(async (book) => {});
 
@@ -113,6 +116,9 @@ export async function renderProfile(readingList, ratedList) {
   for (const ratedBook of ratedList) {
     const row = await printBookRow(ratedBook.book, ratedBook.rating);
     document.getElementById("rated-list-tbody").appendChild(row);
+    row.addEventListener("click", () => {
+      renderBook(ratedBook.book.id);
+    });
   }
 
   // ratedList.forEach(async (ratedBook) => {});
@@ -143,20 +149,16 @@ export async function printBookRow(book, rating, reading) {
   let ratings = await getBookRatings(book.id);
   let calced = calcRating(ratings);
   let { averageRating } = calced;
-
   tdAvgRating.innerText = averageRating;
-
   row.appendChild(tdAvgRating);
 
   const tdUserRating = document.createElement("td");
-  
-    tdUserRating.innerText = rating ? rating : "";
-    row.appendChild(tdUserRating);
- 
+  tdUserRating.innerText = rating ? rating : "";
+  row.appendChild(tdUserRating);
 
   if (reading) {
     const deleteBtn = document.createElement("td");
-    deleteBtn.innerHTML = `<button class="remove-button" data-book-id="${book.id}">Remove</button>
+    deleteBtn.innerHTML = `<button class="remove-button" class="remove-button">Remove</button>
   `;
     deleteBtn.addEventListener("click", (e) => {
       removeFromReading(book.id);

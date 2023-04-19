@@ -87,40 +87,43 @@ function addAuthEvents() {
 }
 
 //renders the profile page
-export async function renderProfile(readingList, ratedList) {
+export async function renderProfile(readingList, ratedList, listSide) {
   // const readingList = await getReadingList();
   // const ratedList = await getRatedBooks();
 
   ///
 
   console.log(readingList, "the list");
-  hideAll();
-  elements.ratedListBody.innerHTML = "";
-  elements.readingListBody.innerHTML = "";
+  
+
   console.log("i should only be here once");
 
-  for (const book of readingList) {
-    // const hasRated = await checkRating(book.id, true);
-    // // console.log(hasRated, "has Rated???", hasRated.attributes.rating);
-    // const ifRated = hasRated ? hasRated.attributes.rating : 0;
-    const row = await printBookRow(book, book.userRating, true);
-    document.getElementById("reading-list-tbody").appendChild(row);
-    row.addEventListener("click", () => {
-      renderBook(book.id);
-    });
+  if (listSide === "left" || listSide === "both") {
+    elements.readingListBody.innerHTML = "";
+    for (const book of readingList) {
+      // const hasRated = await checkRating(book.id, true);
+      // // console.log(hasRated, "has Rated???", hasRated.attributes.rating);
+      // const ifRated = hasRated ? hasRated.attributes.rating : 0;
+      const row = await printBookRow(book, book.userRating, true);
+      document.getElementById("reading-list-tbody").appendChild(row);
+      row.addEventListener("click", () => {
+        renderBook(book.id);
+      });
+    }
   }
   // readingList.forEach(async (book) => {});
 
   // console.log(ratedList, "rated booook");
-
-  for (const ratedBook of ratedList) {
-    const row = await printBookRow(ratedBook.book, ratedBook.rating);
-    document.getElementById("rated-list-tbody").appendChild(row);
-    row.addEventListener("click", () => {
-      renderBook(ratedBook.book.id);
-    });
+  if (listSide === "right" || listSide === "both") {
+    elements.ratedListBody.innerHTML = "";
+    for (const ratedBook of ratedList) {
+      const row = await printBookRow(ratedBook.book, ratedBook.rating);
+      document.getElementById("rated-list-tbody").appendChild(row);
+      row.addEventListener("click", () => {
+        renderBook(ratedBook.book.id);
+      });
+    }
   }
-
   // ratedList.forEach(async (ratedBook) => {});
 
   elements.profilePage.style.display = "grid";
@@ -269,11 +272,12 @@ function clearAll() {
 
 // async function renderBookList() {}
 
-export async function sortAndRender(column) {
+export async function sortAndRender(column, listSide) {
   const readingList = await getReadingList();
   const ratedList = await getRatedBooks();
 
   // applying average rating of each book object instead of calculating while printing
+
   for (const book of readingList) {
     const ratings = await getBookRatings(book.id);
     const calced = calcRating(ratings);
@@ -283,12 +287,17 @@ export async function sortAndRender(column) {
     const ifRated = hasRated ? hasRated.attributes.rating : 0;
     book.userRating = ifRated;
   }
+
+  // if (listSide === "left" || listSide === "both")
+  // if (listSide === "right" || listSide === "both")
+
   for (const ratedBook of ratedList) {
     const ratings = await getBookRatings(ratedBook.book.id);
     const calced = calcRating(ratings);
     ratedBook.book.averageRating = calced.averageRating;
     ratedBook.book.userRating = ratedBook.rating;
   }
+
   //get thje sorting function to be used in the .sort method
 
   if (column) {
@@ -303,10 +312,18 @@ export async function sortAndRender(column) {
       ratedList.sort((a, b) => sortFunction(b.book, a.book));
     }
   }
+
   console.log(readingList, ratedList, "testing things");
 
-  renderProfile(readingList, ratedList);
+  // if (listSide === "left") {
+  //   renderProfile(sortedReading, ratedList);
+  // } else if (listSide === "right") {
+  //   renderProfile(sortedRated, readingList);
+  // } else renderProfile(readingList, ratedList);
+
+  renderProfile(readingList, ratedList, listSide);
 }
+
 // attempting to keep track of what order to sort columns in
 //realised i dont actually need to fill them with data, but might aswell ig
 const sortingState = {

@@ -87,36 +87,36 @@ elements.submitScore.addEventListener("click", (e) => {
 
 // event listeners for ratinglist theads
 document.getElementById("rated-list-title").addEventListener("click", () => {
-  sortAndRender("title");
+  sortAndRender("title", "right");
 });
 document.getElementById("rated-list-author").addEventListener("click", () => {
-  sortAndRender("author");
+  sortAndRender("author", "right");
 });
 document
   .getElementById("rated-list-avg-rating")
   .addEventListener("click", () => {
-    sortAndRender("avgRating");
+    sortAndRender("avgRating", "right");
   });
 document
   .getElementById("rated-list-user-rating")
   .addEventListener("click", () => {
-    sortAndRender("userRating");
+    sortAndRender("userRating", "right");
   });
 
 // event listeners for reading list theads
 document.getElementById("reading-list-title").addEventListener("click", () => {
-  sortAndRender("title");
+  sortAndRender("title", "left");
 });
 document.getElementById("reading-list-author").addEventListener("click", () => {
-  sortAndRender("author");
+  sortAndRender("author", "left");
 });
 document
   .getElementById("reading-list-avg-rating")
   .addEventListener("click", () => {
-    sortAndRender("avgRating");
+    sortAndRender("avgRating", "left");
   });
 document
   .getElementById("reading-list-user-rating")
   .addEventListener("click", () => {
-    sortAndRender("userRating");
+    sortAndRender("userRating", "left");
   });

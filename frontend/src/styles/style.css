@@ -25,14 +25,6 @@ header #user-div {
   display: grid;
 }
 
-td {
-  text-align: start;
-  align-self: start;
-  justify-items: start;
-  border: black solid;
-  border-width: 0 1px 0 0;
-}
-
 #book-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -145,8 +137,19 @@ table thead {
   padding: 10px;
   margin: 10px;
 }
+table thead th {
+  border: black 1px solid;
+  padding: 0.5rem;
+}
 table thead th:hover {
   cursor: pointer;
+}
+table td {
+  text-align: start;
+  justify-items: start;
+  padding: 5px;
+  border: black solid;
+  border-width: 0 1px 0 0;
 }
 
 /* input */

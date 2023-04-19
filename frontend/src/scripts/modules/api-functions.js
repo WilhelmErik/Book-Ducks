@@ -364,3 +364,4 @@ export async function getTheme() {
   const data = await res.json();
   return data.data.attributes.scheme;
 }
+

@@ -294,10 +294,12 @@ export async function sortAndRender(column) {
   renderProfile(readingList, ratedList);
 }
 // attempting to keep track of what order to sort columns in
+//realised i dont actually need to fill them with data, but might aswell ig
 const sortingState = {
   title: "asc",
   author: "asc",
-  avg: "asc",
+  // avgRating: "asc",
+  // userRating: "asc",
 };
 //different functions that depending on whcih column user click, will return a sorting function to be passed into the .sort method
 

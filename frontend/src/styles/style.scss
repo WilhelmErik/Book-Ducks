@@ -45,7 +45,24 @@ td{
         text-align: left;
     }
 }
+.dark{
+    background-color: rgb(42, 42, 42);
+    color: white;
+  }
 
+.light{
+    color: black;
+    background-color: aliceblue;
+
+    #book-page{
+
+        div{
+            p{
+                
+            }
+        }
+    }
+}
 
 #bp-author{
     color: rgb(177, 177, 177);

@@ -112,6 +112,21 @@ input[type=password] {
   border-color: rgb(255, 165, 127);
 }
 
+#rated-list-title button {
+  background-color: rgba(0, 255, 255, 0.003);
+  border-width: 0 0 1px 0;
+}
+
+table thead {
+  border: black solid 2px;
+  background-color: aquamarine;
+  padding: 10px;
+  margin: 10px;
+}
+table thead th:hover {
+  cursor: pointer;
+}
+
 /* input */
 /* .container {
     min-height: 300px;

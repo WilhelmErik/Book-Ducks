@@ -71,8 +71,6 @@ elements.submitScore.addEventListener("click", (e) => {
 
 //event listener for all the books, which will show the clicked book
 
-
-
 // })
 
 //funktion som kommer att hämta rated of reading
@@ -82,6 +80,8 @@ elements.submitScore.addEventListener("click", (e) => {
 //använda listorna som argument till renderProfile
 
 //temp place for adding event listeners to tables
+
+// event listeners for ratinglist theads
 document.getElementById("rated-list-title").addEventListener("click", () => {
   sortAndRender("title");
 });
@@ -93,7 +93,13 @@ document
   .addEventListener("click", () => {
     sortAndRender("avgRating");
   });
+document
+  .getElementById("rated-list-user-rating")
+  .addEventListener("click", () => {
+    sortAndRender("userRating");
+  });
 
+// event listeners for reading list theads
 document.getElementById("reading-list-title").addEventListener("click", () => {
   sortAndRender("title");
 });
@@ -106,7 +112,7 @@ document
     sortAndRender("avgRating");
   });
 document
-  .getElementById("rated-list-user-rating")
+  .getElementById("reading-list-user-rating")
   .addEventListener("click", () => {
     sortAndRender("userRating");
   });

@@ -275,10 +275,17 @@ export async function sortAndRender(column) {
     ratedBook.book.userRating = ratedBook.rating;
   }
   //get thje sorting function to be used in the .sort method
+
   if (column) {
-    let sortFunction = getSortingFunction(column);
-    readingList.sort((a, b) => sortFunction(a, b));
-    ratedList.sort((a, b) => sortFunction(a.book, b.book));
+    if (sortingState[column] === "asc") {
+      let sortFunction = getSortingFunction(column);
+      readingList.sort((a, b) => sortFunction(a, b));
+      ratedList.sort((a, b) => sortFunction(a.book, b.book));
+    } else {
+      let sortFunction = getSortingFunction(column);
+      readingList.sort((a, b) => sortFunction(b, a));
+      ratedList.sort((a, b) => sortFunction(b.book, a.book));
+    }
   }
   console.log(readingList, ratedList, "testing things");
 
@@ -298,3 +305,10 @@ export function getSortingFunction(column) {
     return (a, b) => b.userRating - a.userRating;
   }
 }
+
+// attempting to keep track of what order to sort columns in
+const sortingState = {
+  title: "asc",
+  author: "asc",
+  avg: "asc",
+};

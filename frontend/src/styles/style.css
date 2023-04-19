@@ -47,9 +47,11 @@ header #user-div {
 
 .light {
   color: black;
-  background-color: aliceblue;
+  background-color: rgba(238, 234, 224, 0.999);
 }
-#add-reading, #submit-score {
+
+#add-reading,
+#submit-score {
   border-radius: 12px;
   background-color: transparent;
   border-color: orange;
@@ -96,7 +98,8 @@ header #user-div {
   margin: auto;
 }
 
-#reading-list, #rated-list {
+#reading-list,
+#rated-list {
   padding: 30px;
 }
 
@@ -133,10 +136,11 @@ input[type=password] {
   font-size: 24px;
 }
 
-#logout-button, #login-button {
+#logout-button,
+#login-button {
   /* position: absolute;
-  right: 10px;
-  top: 10px; */
+    right: 10px;
+    top: 10px; */
   padding: 10px;
   font-size: 24px;
   border-radius: 16px;
@@ -244,6 +248,12 @@ table td img {
   font-family: Times;
   line-height: 1;
 }
+.rating:hover input:checked ~ label:before {
+  opacity: 0.1;
+}
+.rating:hover > input:checked ~ label:before {
+  opacity: 0.4;
+}
 .rating input {
   display: none;
 }
@@ -262,6 +272,9 @@ table td img {
   position: absolute;
   opacity: 0;
 }
+.rating label:hover input:checked ~ label:before {
+  opacity: 0.4;
+}
 .rating label:hover:before {
   opacity: 1 !important;
 }
@@ -276,7 +289,8 @@ table td img {
     align-items: start;
     gap: 20px;
   }
-  #profile-page #reading-list, #profile-page #rated-list {
+  #profile-page #reading-list,
+  #profile-page #rated-list {
     display: grid;
     justify-content: center;
   }

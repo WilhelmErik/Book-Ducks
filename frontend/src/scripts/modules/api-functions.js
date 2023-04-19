@@ -305,6 +305,7 @@ export function calcRating(userRatings) {
     let scoreTotal = rateValues.reduce((accum, current) => accum + current);
     // console.log(scoreTotal, "scoreTotal");
     let averageRating = scoreTotal / rateAmount;
+    averageRating = parseFloat(averageRating.toFixed(2));
     // console.log(averageRating, "Average rating");
     // return averageRating;
     return { averageRating: averageRating, totalVoters: rateAmount };

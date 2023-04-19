@@ -157,7 +157,7 @@ export async function getBooks() {
 }
 export async function getBook(id) {
   console.log("hej på dig");
-  await getBookRatings(id);
+  // await getBookRatings(id);
   hideAll();
   elements.bookPage.style.display = "block";
 
@@ -188,7 +188,7 @@ export async function setRating() {
       },
       body: JSON.stringify({
         data: {
-          rating: document.getElementById("user-score").value,
+          rating: document.querySelector('input[name="rating"]:checked').value,
           user: userID,
           book: elements.bookPage.dataset.id,
         },
@@ -215,7 +215,7 @@ export async function changeRating(ratingID) {
     },
     body: JSON.stringify({
       data: {
-        rating: document.getElementById("user-score").value,
+        rating: document.querySelector('input[name="rating"]:checked').value,
       },
     }),
   });

@@ -5,6 +5,11 @@ body {
      background-color: rgb(42, 42, 42);
      color: white;
 }
+
+h1{
+    font-size: 36px;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
 header{
     border-bottom: black 2px solid ;
     display: flex;
@@ -29,7 +34,7 @@ header{
 
 #book-page{
     display: grid; 
-   grid-template-columns: 1fr 1fr;
+   grid-template-columns: 1fr 2fr;
     // border: 2px black solid;
     padding: 10px;
 
@@ -56,6 +61,17 @@ header{
     }
 }
 
+#add-reading,#submit-score{
+    border-radius: 12px;
+    background-color: transparent;
+     border-color: orange;
+    //  padding-left: 2rem;
+    //  padding-right: 2rem;
+    min-width: 200px;
+    max-width: 300px;
+    width: 100%;
+}
+
 .remove-button{
     background-color: rgb(163, 1, 1);
     color: white;
@@ -63,7 +79,7 @@ header{
 }
 
 #bp-author{
-    color: rgb(177, 177, 177);
+    color: rgb(117, 117, 117);
     font-weight:400;
     font-size: 24px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
@@ -187,6 +203,10 @@ table{
         padding:5px;
         border:  black solid;
         border-width :0  1px 0 0;
+
+        img{
+            cursor: pointer;
+        }
     }
 
 }
@@ -242,7 +262,105 @@ table{
 
 .login-register {
     grid-area: login-register;
+    
 } */
+
+#book-left{
+    button{
+        margin: 0.8rem;
+    }
+    #book-cover{
+        div{
+            button{
+                margin: 3rem;
+            }
+            img{
+               
+                border-radius: 16px;
+                width: 300px;
+                max-width: 90%;
+                box-shadow: 4px 4px rgba(184, 121, 5, 0.358);
+            }
+        }
+    }
+}
+
+
+//------------------ css for star rating------------------
+
+.rating {
+    // background-color: rgb(16, 17, 17);
+    
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-family: Times;
+    line-height: 1;
+
+    input{
+        display: none;
+        &:checked{
+            ~{
+                label:before{
+opacity:1
+                }
+            }
+        }
+    }
+
+label{
+    position: relative;
+  width: 1.1em;
+  font-size:36px;
+  color: #ffab02;
+  cursor: pointer;
+
+  &::before{
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+
+}
+&:hover {
+    &:before {
+        opacity: 1 !important;
+    }
+    ~ {
+        label {
+            &:before {
+                opacity: 1 !important;
+            }
+        }
+    }
+}
+
+}
+ 
+
+  
+}
+// label::before{ 
+    
+//   }
+
+
+  
+
+
+
+
+
+//_______________________________________________________
+
+
+
+
+
+
+
+
+
+
 
 @media screen and ( max-width: 768px){
     #profile-page{
@@ -259,8 +377,27 @@ table{
     }
     
     #book-cover{
-        img{
-            max-width: 90%;
+        div{
+            img{
+                max-width: 90%;
+            }
         }
     }
+    #book-page{
+        display: grid; 
+       grid-template-columns: 1fr ;
+        // border: 2px black solid;
+        padding: 10px;
+    
+        #book-right{
+            text-align: left;
+        }
+    }
+
+
+
+
 }
+
+
+

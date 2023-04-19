@@ -1,9 +1,15 @@
+@charset "UTF-8";
 body {
   text-align: center;
   margin: 0px;
   height: 100vh;
   background-color: rgb(42, 42, 42);
   color: white;
+}
+
+h1 {
+  font-size: 36px;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 header {
@@ -27,7 +33,7 @@ header #user-div {
 
 #book-page {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   padding: 10px;
 }
 #book-page #book-right {
@@ -43,6 +49,15 @@ header #user-div {
   color: black;
   background-color: aliceblue;
 }
+#add-reading, #submit-score {
+  border-radius: 12px;
+  background-color: transparent;
+  border-color: orange;
+  min-width: 200px;
+  max-width: 300px;
+  width: 100%;
+}
+
 .remove-button {
   background-color: rgb(163, 1, 1);
   color: white;
@@ -50,7 +65,7 @@ header #user-div {
 }
 
 #bp-author {
-  color: rgb(177, 177, 177);
+  color: rgb(117, 117, 117);
   font-weight: 400;
   font-size: 24px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
@@ -152,6 +167,9 @@ table td {
   border: black solid;
   border-width: 0 1px 0 0;
 }
+table td img {
+  cursor: pointer;
+}
 
 /* input */
 /* .container {
@@ -204,7 +222,53 @@ table td {
 
 .login-register {
     grid-area: login-register;
+
 } */
+#book-left button {
+  margin: 0.8rem;
+}
+#book-left #book-cover div button {
+  margin: 3rem;
+}
+#book-left #book-cover div img {
+  border-radius: 16px;
+  width: 300px;
+  max-width: 90%;
+  box-shadow: 4px 4px rgba(184, 121, 5, 0.358);
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  font-family: Times;
+  line-height: 1;
+}
+.rating input {
+  display: none;
+}
+.rating input:checked ~ label:before {
+  opacity: 1;
+}
+.rating label {
+  position: relative;
+  width: 1.1em;
+  font-size: 36px;
+  color: #ffab02;
+  cursor: pointer;
+}
+.rating label::before {
+  content: "★";
+  position: absolute;
+  opacity: 0;
+}
+.rating label:hover:before {
+  opacity: 1 !important;
+}
+.rating label:hover ~ label:before {
+  opacity: 1 !important;
+}
+
 @media screen and (max-width: 768px) {
   #profile-page {
     display: grid;
@@ -216,7 +280,15 @@ table td {
     display: grid;
     justify-content: center;
   }
-  #book-cover img {
+  #book-cover div img {
     max-width: 90%;
+  }
+  #book-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+  #book-page #book-right {
+    text-align: left;
   }
 }/*# sourceMappingURL=style.css.map */

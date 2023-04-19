@@ -133,14 +133,39 @@
           <div id="book-cover"></div>
           <button id="add-reading" class="bp-button">add read</button>
           <div id="add-score">
-            <select name="" id="user-score">
+            <!-- <select name="" id="user-score">
               <option value="2" disabled selected>Set Score</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
-            </select>
+            </select> -->
+
+            <div class="rating" id="star-rating">
+              <!--elements are in reversed order, to allow "previous sibling selectors" in CSS-->
+              <input type="radio" name="rating" value="5" id="5" /><label
+                for="5"
+                >☆</label
+              >
+              <input type="radio" name="rating" value="4" id="4" /><label
+                for="4"
+                >☆</label
+              >
+              <input type="radio" name="rating" value="3" id="3" /><label
+                for="3"
+                >☆</label
+              >
+              <input type="radio" name="rating" value="2" id="2" /><label
+                for="2"
+                >☆</label
+              >
+              <input type="radio" name="rating" value="1" id="1" /><label
+                for="1"
+                >☆</label
+              >
+            </div>
+
             <!-- <button id="set-score">set Score</button> -->
             <button
               id="submit-score"

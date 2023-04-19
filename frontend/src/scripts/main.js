@@ -65,6 +65,13 @@ elements.submitScore.addEventListener("click", (e) => {
   renderBook(elements.bookPage.dataset.id);
 });
 
+
+// document.querySelector(".rating").addEventListener("click", (e) => {
+//     // window.confirm("Do you really want to vote?")
+//     checkRating(elements.bookPage.dataset.id);
+//     // renderBook(elements.bookPage.dataset.id);
+//   });
+
 // document.getElementById("entry-form").style.display = "none";
 
 // elements.

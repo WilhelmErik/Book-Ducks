@@ -357,8 +357,35 @@ export async function setReadingList(chosenBook, userID) {
     console.log("Book is already in the reading list.", chosenBook);
   }
 }
-export async function removeFromReading(chosenBook){
+export async function removeFromReading(chosenBook) {
+  //take the id from the selected book,
+  //loop through the array to find selected book,
+  const readinglist = await getReadingList();
+  console.log(readinglist, "initial", readinglist.length);
+  //filter it out
+  let modifiedList = readinglist.filter((element) => {
+    return element.id !== chosenBook;
+  });
+  console.log(modifiedList, "modified", modifiedList.length);
 
+  //send the modified array back to readinglist
+  const userID = sessionStorage.getItem("userID");
+  const response = await fetch(`${baseAPI}users/${userID}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({
+      to_reads: modifiedList,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to update reading list: ${response.statusText}`);
+  }
+sortAndRender()
+  return await response.json();
 }
 
 //------------------------_______________------------------------------
@@ -368,4 +395,3 @@ export async function getTheme() {
   const data = await res.json();
   return data.data.attributes.scheme;
 }
-

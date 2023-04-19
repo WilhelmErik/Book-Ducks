@@ -12,6 +12,7 @@ import {
   getRatedBooks,
   checkRating,
   getTheme,
+  removeFromReading,
 } from "./api-functions.js";
 
 export function displayRegister() {
@@ -152,6 +153,16 @@ export async function printBookRow(book, rating) {
     tdUserRating.innerText = rating;
     row.appendChild(tdUserRating);
   }
+  const deleteBtn = document.createElement("td");
+  deleteBtn.innerHTML = `<button class="remove-button" data-book-id="${book.id}">Remove</button>
+  `;
+  deleteBtn.addEventListener("click", (e) => {
+    removeFromReading(book.id);
+    console.log(book.id, "id of book");
+  });
+
+  row.appendChild(deleteBtn);
+
   return row;
 }
 

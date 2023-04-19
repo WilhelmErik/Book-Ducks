@@ -23,6 +23,8 @@ import {
 } from "./modules/api-functions.js";
 getAndSetTheme();
 
+console.log("in a branch");
+
 isLoggedIn();
 hideAll();
 renderIndex();

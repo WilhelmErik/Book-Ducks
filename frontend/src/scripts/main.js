@@ -8,6 +8,7 @@ import {
   renderAuth,
   renderProfile,
   sortAndRender,
+  getAndSetTheme,
 } from "./modules/ui-functions.js";
 import {
   register,
@@ -20,6 +21,7 @@ import {
   calcRating,
   checkRating,
 } from "./modules/api-functions.js";
+getAndSetTheme();
 
 isLoggedIn();
 hideAll();

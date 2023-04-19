@@ -11,6 +11,7 @@ import {
   getReadingList,
   getRatedBooks,
   checkRating,
+  getTheme,
 } from "./api-functions.js";
 
 export function displayRegister() {
@@ -125,7 +126,7 @@ export async function printBookRow(book, rating) {
   const tdCover = document.createElement("td");
   const cover = document.createElement("img");
   cover.src = "http://localhost:1337" + book.book_cover.formats.thumbnail.url;
-  cover.width = 50;
+  cover.width = 52;
   tdCover.appendChild(cover);
   row.appendChild(tdCover);
 
@@ -312,4 +313,9 @@ export function getSortingFunction(column) {
   }
 }
 
+export async function getAndSetTheme() {
+  const theme = await getTheme();
+  console.log(theme, "wtf");
 
+  document.body.className = theme;
+}

@@ -2,6 +2,16 @@ body {
   text-align: center;
   margin: 0px;
   height: 100vh;
+ 
+}
+
+.dark{
+  background-color: rgb(42, 42, 42);
+  color: white;
+}
+.light{
+  color: black;
+  background-color: aliceblue;
 }
 
 header {
@@ -9,7 +19,6 @@ header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgb(247, 228, 187);
 }
 header #user-div {
   display: flex;
@@ -26,17 +35,25 @@ header #user-div {
 
 td {
   text-align: start;
-  border: 1px black solid;
+  align-self: start;
+  justify-items: start;
+  border: black solid;
+  border-width: 0 1px 0 0;
 }
 
 #book-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 2px black solid;
   padding: 10px;
 }
 #book-page #book-right {
   text-align: left;
+}
+
+#bp-author {
+  color: rgb(177, 177, 177);
+  font-weight: bold;
+  font-size: 32;
 }
 
 #all-books {
@@ -45,7 +62,6 @@ td {
   justify-content: center;
 }
 #all-books div {
-  border: black solid 1px;
   margin: 10px;
 }
 #all-books img {
@@ -63,10 +79,6 @@ td {
   display: grid;
   border: black solid 2px;
   margin: auto;
-}
-
-#reading-list, #rated-list {
-  background-color: rgba(246, 148, 0, 0.234);
 }
 
 .container {
@@ -119,7 +131,6 @@ input[type=password] {
 
 table thead {
   border: black solid 2px;
-  background-color: aquamarine;
   padding: 10px;
   margin: 10px;
 }

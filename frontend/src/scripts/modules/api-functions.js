@@ -37,7 +37,7 @@ export async function isLoggedIn() {
     elements.activeUser.innerText = userData.username;
     elements.activeUser.addEventListener("click", (e) => {
       // renderProfile();
-      sortAndRender()
+      sortAndRender();
 
       console.log("hej, lets do smth");
     });
@@ -359,4 +359,8 @@ export async function setReadingList(chosenBook, userID) {
 }
 //------------------------_______________------------------------------
 
-export async function getTheme() {}
+export async function getTheme() {
+  const res = await fetch(baseAPI + "theme");
+  const data = await res.json();
+  return data.data.attributes.scheme;
+}

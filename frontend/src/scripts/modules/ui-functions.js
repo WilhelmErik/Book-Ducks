@@ -88,13 +88,7 @@ function addAuthEvents() {
 
 //renders the profile page
 export async function renderProfile(readingList, ratedList, listSide) {
-  // const readingList = await getReadingList();
-  // const ratedList = await getRatedBooks();
-
-  ///
-
   console.log(readingList, "the list");
-  
 
   console.log("i should only be here once");
 
@@ -106,9 +100,9 @@ export async function renderProfile(readingList, ratedList, listSide) {
       // const ifRated = hasRated ? hasRated.attributes.rating : 0;
       const row = await printBookRow(book, book.userRating, true);
       document.getElementById("reading-list-tbody").appendChild(row);
-      row.addEventListener("click", () => {
-        renderBook(book.id);
-      });
+      // row.addEventListener("click", () => {
+      //   renderBook(book.id);
+      // });
     }
   }
   // readingList.forEach(async (book) => {});
@@ -119,9 +113,9 @@ export async function renderProfile(readingList, ratedList, listSide) {
     for (const ratedBook of ratedList) {
       const row = await printBookRow(ratedBook.book, ratedBook.rating);
       document.getElementById("rated-list-tbody").appendChild(row);
-      row.addEventListener("click", () => {
-        renderBook(ratedBook.book.id);
-      });
+      // row.addEventListener("click", () => {
+      //   renderBook(ratedBook.book.id);
+      // });
     }
   }
   // ratedList.forEach(async (ratedBook) => {});

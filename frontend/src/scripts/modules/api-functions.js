@@ -388,7 +388,7 @@ export async function removeFromReading(chosenBook) {
   if (!response.ok) {
     throw new Error(`Failed to update reading list: ${response.statusText}`);
   }
-  sortAndRender();
+  sortAndRender(false, "left");
   return await response.json();
 }
 

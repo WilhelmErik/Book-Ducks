@@ -277,12 +277,13 @@ export async function sortAndRender(column) {
   //get thje sorting function to be used in the .sort method
 
   if (column) {
+    sortingState[column] = sortingState[column] === "asc" ? "desc" : "asc";
+
+    let sortFunction = getSortingFunction(column);
     if (sortingState[column] === "asc") {
-      let sortFunction = getSortingFunction(column);
       readingList.sort((a, b) => sortFunction(a, b));
       ratedList.sort((a, b) => sortFunction(a.book, b.book));
     } else {
-      let sortFunction = getSortingFunction(column);
       readingList.sort((a, b) => sortFunction(b, a));
       ratedList.sort((a, b) => sortFunction(b.book, a.book));
     }
@@ -292,6 +293,11 @@ export async function sortAndRender(column) {
   renderProfile(readingList, ratedList);
 }
 
+const sortingState = {
+  title: "asc",
+  author: "asc",
+  avg: "asc",
+};
 //different functions that depending on whcih column user click, will return a sorting function to be passed into the .sort method
 
 export function getSortingFunction(column) {
@@ -307,8 +313,3 @@ export function getSortingFunction(column) {
 }
 
 // attempting to keep track of what order to sort columns in
-const sortingState = {
-  title: "asc",
-  author: "asc",
-  avg: "asc",
-};

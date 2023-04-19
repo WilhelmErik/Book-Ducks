@@ -133,10 +133,10 @@ export async function printBookRow(book, rating, reading) {
   cover.width = 52;
   tdCover.appendChild(cover);
   row.appendChild(tdCover);
-  
+
   tdCover.addEventListener("click", () => {
-        renderBook(book.id);
-      });
+    renderBook(book.id);
+  });
 
   const tdTitle = document.createElement("td");
   tdTitle.innerText = book.title;
@@ -232,8 +232,14 @@ export async function renderBook(id) {
 
   elements.bpTitle.innerText = book.attributes.title;
   elements.bpAuthor.innerText = book.attributes.author;
-  elements.bpScore.innerText =
-    "Average score:" + averageRating + " out of:" + totalVoters + " voters";
+
+  elements.bpScore.innerText = averageRating;
+  const percentage = (averageRating / 5) * 100;
+  document.getElementById("rating-stars-filled").style.width = `${percentage}%`;
+
+  document.getElementById("bp-ratings").innerText =
+    +totalVoters + "total ratings";
+
   elements.bpPages.innerText = "pages:" + book.attributes.pages;
   elements.bpPublished.innerText = "published:" + book.attributes.release_date;
 

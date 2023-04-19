@@ -66,6 +66,12 @@ elements.submitScore.addEventListener("click", (e) => {
 });
 
 
+const averageRating = 3;
+
+
+
+
+
 // document.querySelector(".rating").addEventListener("click", (e) => {
 //     // window.confirm("Do you really want to vote?")
 //     checkRating(elements.bookPage.dataset.id);

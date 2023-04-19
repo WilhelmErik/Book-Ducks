@@ -282,6 +282,36 @@ table td img {
   opacity: 1 !important;
 }
 
+.rating2 {
+  display: flex;
+}
+.rating2 #bp-score {
+  align-self: center;
+  font-size: 32px;
+  margin-bottom: -5px;
+}
+
+.rating-stars {
+  position: relative;
+  font-size: 2.5rem;
+  display: inline-block;
+}
+.rating-stars .rating-stars-wrapper {
+  display: inline-block;
+  position: relative;
+}
+.rating-stars .rating-stars-empty {
+  color: #ccc;
+}
+.rating-stars .rating-stars-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: gold;
+}
+
 @media screen and (max-width: 768px) {
   #profile-page {
     display: grid;

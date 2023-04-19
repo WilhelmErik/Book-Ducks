@@ -202,6 +202,10 @@ table{
         padding:5px;
         border:  black solid;
         border-width :0  1px 0 0;
+
+        img{
+            cursor: pointer;
+        }
     }
 
 }
@@ -260,16 +264,102 @@ table{
     
 } */
 
-
-#book-cover{
-    div{
-        img{
-            border-radius: 16px;
-            width: 300px;
-            max-width: 90%;
+#book-left{
+    button{
+        margin: 0.8rem;
+    }
+    #book-cover{
+        div{
+            button{
+                margin: 3rem;
+            }
+            img{
+               
+                border-radius: 16px;
+                width: 300px;
+                max-width: 90%;
+                box-shadow: 4px 4px rgba(184, 121, 5, 0.358);
+            }
         }
     }
 }
+
+
+//------------------ css for star rating------------------
+
+.rating {
+    // background-color: rgb(16, 17, 17);
+    
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-family: Times;
+    line-height: 1;
+
+    input{
+        display: none;
+        &:checked{
+            ~{
+                label:before{
+opacity:1
+                }
+            }
+        }
+    }
+
+label{
+    position: relative;
+  width: 1.1em;
+  font-size:36px;
+  color: #ffab02;
+  cursor: pointer;
+
+  &::before{
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+
+}
+&:hover {
+    &:before {
+        opacity: 1 !important;
+    }
+    ~ {
+        label {
+            &:before {
+                opacity: 1 !important;
+            }
+        }
+    }
+}
+
+}
+ 
+
+  
+}
+// label::before{ 
+    
+//   }
+
+
+  
+
+
+
+
+
+//_______________________________________________________
+
+
+
+
+
+
+
+
+
+
 
 @media screen and ( max-width: 768px){
     #profile-page{
@@ -307,3 +397,6 @@ table{
 
 
 }
+
+
+

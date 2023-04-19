@@ -59,12 +59,17 @@ elements.indexPage.addEventListener("click", (e) => {
 //   setRating();
 // });
 
-elements.submitScore.addEventListener("click", (e) => {
+// elements.submitScore.addEventListener("click", (e) => {
+//   // window.confirm("Do you really want to vote?")
+//   checkRating(elements.bookPage.dataset.id);
+//   renderBook(elements.bookPage.dataset.id);
+// });
+
+document.getElementById("star-rating").addEventListener("click", (e) => {
   // window.confirm("Do you really want to vote?")
   checkRating(elements.bookPage.dataset.id);
   renderBook(elements.bookPage.dataset.id);
 });
-
 // document.getElementById("entry-form").style.display = "none";
 
 // elements.

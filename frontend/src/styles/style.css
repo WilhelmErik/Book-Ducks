@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   text-align: center;
   margin: 0px;
@@ -165,6 +166,9 @@ table td {
   border: black solid;
   border-width: 0 1px 0 0;
 }
+table td img {
+  cursor: pointer;
+}
 
 /* input */
 /* .container {
@@ -219,10 +223,49 @@ table td {
     grid-area: login-register;
 
 } */
-#book-cover div img {
+#book-left button {
+  margin: 0.8rem;
+}
+#book-left #book-cover div button {
+  margin: 3rem;
+}
+#book-left #book-cover div img {
   border-radius: 16px;
   width: 300px;
   max-width: 90%;
+  box-shadow: 4px 4px rgba(184, 121, 5, 0.358);
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  font-family: Times;
+  line-height: 1;
+}
+.rating input {
+  display: none;
+}
+.rating input:checked ~ label:before {
+  opacity: 1;
+}
+.rating label {
+  position: relative;
+  width: 1.1em;
+  font-size: 36px;
+  color: #ffab02;
+  cursor: pointer;
+}
+.rating label::before {
+  content: "★";
+  position: absolute;
+  opacity: 0;
+}
+.rating label:hover:before {
+  opacity: 1 !important;
+}
+.rating label:hover ~ label:before {
+  opacity: 1 !important;
 }
 
 @media screen and (max-width: 768px) {

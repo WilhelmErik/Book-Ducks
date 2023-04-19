@@ -6,6 +6,11 @@ body {
   color: white;
 }
 
+h1 {
+  font-size: 36px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
 header {
   border-bottom: black 2px solid;
   display: flex;
@@ -27,7 +32,7 @@ header #user-div {
 
 #book-page {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   padding: 10px;
 }
 #book-page #book-right {
@@ -43,6 +48,15 @@ header #user-div {
   color: black;
   background-color: aliceblue;
 }
+#add-reading, #submit-score {
+  border-radius: 12px;
+  background-color: transparent;
+  border-color: orange;
+  min-width: 200px;
+  max-width: 300px;
+  width: 100%;
+}
+
 .remove-button {
   background-color: rgb(163, 1, 1);
   color: white;
@@ -52,7 +66,7 @@ header #user-div {
 #bp-author {
   color: rgb(177, 177, 177);
   font-weight: bold;
-  font-size: 32;
+  font-size: 24px;
 }
 
 #all-books {
@@ -203,7 +217,14 @@ table td {
 
 .login-register {
     grid-area: login-register;
+
 } */
+#book-cover div img {
+  border-radius: 16px;
+  width: 300px;
+  max-width: 90%;
+}
+
 @media screen and (max-width: 768px) {
   #profile-page {
     display: grid;
@@ -215,7 +236,15 @@ table td {
     display: grid;
     justify-content: center;
   }
-  #book-cover img {
+  #book-cover div img {
     max-width: 90%;
+  }
+  #book-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+  #book-page #book-right {
+    text-align: left;
   }
 }/*# sourceMappingURL=style.css.map */

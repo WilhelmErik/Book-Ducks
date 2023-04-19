@@ -103,7 +103,7 @@ export async function renderProfile(readingList, ratedList) {
     // const hasRated = await checkRating(book.id, true);
     // // console.log(hasRated, "has Rated???", hasRated.attributes.rating);
     // const ifRated = hasRated ? hasRated.attributes.rating : 0;
-    const row = await printBookRow(book, book.userRating);
+    const row = await printBookRow(book, book.userRating, true);
     document.getElementById("reading-list-tbody").appendChild(row);
   }
   // readingList.forEach(async (book) => {});
@@ -121,7 +121,7 @@ export async function renderProfile(readingList, ratedList) {
   // elements.profilePage.style.alignItems = "start";
 }
 
-export async function printBookRow(book, rating) {
+export async function printBookRow(book, rating, reading) {
   const row = document.createElement("tr");
 
   const tdCover = document.createElement("td");
@@ -148,21 +148,22 @@ export async function printBookRow(book, rating) {
 
   row.appendChild(tdAvgRating);
 
-  if (rating) {
-    const tdUserRating = document.createElement("td");
-    tdUserRating.innerText = rating;
+  const tdUserRating = document.createElement("td");
+  
+    tdUserRating.innerText = rating ? rating : "";
     row.appendChild(tdUserRating);
-  }
-  const deleteBtn = document.createElement("td");
-  deleteBtn.innerHTML = `<button class="remove-button" data-book-id="${book.id}">Remove</button>
+ 
+
+  if (reading) {
+    const deleteBtn = document.createElement("td");
+    deleteBtn.innerHTML = `<button class="remove-button" data-book-id="${book.id}">Remove</button>
   `;
-  deleteBtn.addEventListener("click", (e) => {
-    removeFromReading(book.id);
-    console.log(book.id, "id of book");
-  });
-
-  row.appendChild(deleteBtn);
-
+    deleteBtn.addEventListener("click", (e) => {
+      removeFromReading(book.id);
+      console.log(book.id, "id of book");
+    });
+    row.appendChild(deleteBtn);
+  }
   return row;
 }
 

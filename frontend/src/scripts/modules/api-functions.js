@@ -357,6 +357,10 @@ export async function setReadingList(chosenBook, userID) {
     console.log("Book is already in the reading list.", chosenBook);
   }
 }
+export async function removeFromReading(chosenBook){
+
+}
+
 //------------------------_______________------------------------------
 
 export async function getTheme() {

@@ -82,6 +82,10 @@ td {
   margin: auto;
 }
 
+#reading-list, #rated-list {
+  padding: 30px;
+}
+
 .container {
   max-width: 50%;
   display: flex;

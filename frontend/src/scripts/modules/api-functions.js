@@ -35,9 +35,13 @@ export async function isLoggedIn() {
 
     let userData = await getActiveUser();
     elements.activeUser.innerText = userData.username;
+
+    //event listener for username
     elements.activeUser.addEventListener("click", (e) => {
       // renderProfile();
-      sortAndRender();
+      hideAll();
+      sortAndRender(false, "both");
+      console.log("im being run alot eh");
 
       console.log("hej, lets do smth");
     });
@@ -384,7 +388,7 @@ export async function removeFromReading(chosenBook) {
   if (!response.ok) {
     throw new Error(`Failed to update reading list: ${response.statusText}`);
   }
-sortAndRender()
+  sortAndRender();
   return await response.json();
 }
 

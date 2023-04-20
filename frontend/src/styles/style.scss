@@ -12,7 +12,7 @@ h1 {
 }
 header {
   a {
-    color: rgb(213, 171, 21);
+    color: rgb(213, 129, 19);
     text-decoration: double;
     stroke: rgb(255, 13, 0);
     stroke-width: 5;
@@ -70,6 +70,11 @@ header {
   border-bottom: 2px rgb(160, 126, 42) solid;
 }
 .dark {
+  #user-logo {
+    img {
+      content: url("../assets/images/user\ white.png");
+    }
+  }
   background-color: rgb(42, 42, 42);
   color: white;
 
@@ -80,9 +85,19 @@ header {
   .login-register {
     background-color: transparent;
   }
+
+  #auth-button {
+    color: white;
+  }
 }
 
 .light {
+  #user-logo {
+    img {
+      content: url("../assets/images/user\ dark.png");
+    }
+  }
+
   color: black;
   background-color: rgba(238, 234, 224, 0.999);
 

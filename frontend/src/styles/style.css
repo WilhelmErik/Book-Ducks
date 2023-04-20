@@ -19,7 +19,7 @@ header {
   align-items: center;
 }
 header a {
-  color: rgb(213, 171, 21);
+  color: rgb(213, 129, 19);
   -webkit-text-decoration: double;
           text-decoration: double;
   stroke: rgb(255, 13, 0);
@@ -73,16 +73,25 @@ header #user-div {
   background-color: rgb(42, 42, 42);
   color: white;
 }
+.dark #user-logo img {
+  content: url("../assets/images/user white.png");
+}
 .dark button {
   color: white;
 }
 .dark .login-register {
   background-color: transparent;
 }
+.dark #auth-button {
+  color: white;
+}
 
 .light {
   color: black;
   background-color: rgba(238, 234, 224, 0.999);
+}
+.light #user-logo img {
+  content: url("../assets/images/user dark.png");
 }
 
 #add-reading,

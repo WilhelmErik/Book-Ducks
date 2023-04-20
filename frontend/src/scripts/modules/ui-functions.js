@@ -353,6 +353,21 @@ export function getSortingFunction(column) {
 export async function getAndSetTheme() {
   const theme = await getTheme();
   console.log(theme, "wtf");
-
   document.body.className = theme;
+
+  if (theme === "dark") {
+    document.getElementById("user-logo").src =
+      "src/assets/images/user white.png";
+    document.getElementById("logout-logo").src =
+      "src/assets/images/logout white.png";
+    document.getElementById("login-logo").src =
+      "src/assets/images/login white.png";
+  } else {
+    document.getElementById("user-logo").src =
+      "src/assets/images/user dark.png";
+    document.getElementById("logout-logo").src =
+      "src/assets/images/logout dark.png";
+    document.getElementById("login-logo").src =
+      "src/assets/images/login dark.png";
+  }
 }
